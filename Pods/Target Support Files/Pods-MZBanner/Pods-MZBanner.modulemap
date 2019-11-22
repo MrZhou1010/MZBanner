@@ -1,0 +1,6 @@
+module Pods_MZBanner {
+  umbrella header "Pods-MZBanner-umbrella.h"
+
+  export *
+  module * { export * }
+}
