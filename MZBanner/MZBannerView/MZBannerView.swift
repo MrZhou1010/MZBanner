@@ -21,7 +21,10 @@ class MZBannerView: UIView {
     public var isInfinite: Bool = true {
         didSet {
             if self.isInfinite == false {
-                
+                self.itemsCount = self.realDataCount <= 1 || !self.isInfinite ? self.realDataCount : self.realDataCount * 200
+                self.collectionView.reloadData()
+                self.collectionView.setContentOffset(.zero, animated: false)
+                self.dealFirstPage()
             }
         }
     }
@@ -52,7 +55,7 @@ class MZBannerView: UIView {
             }
         }
     }
-    /// 中间item的放大比例,默认为1
+    /// 中间item的放大比例,默认为1.0
     public var itemZoomScale: CGFloat = 1.0 {
         didSet {
             if self.resourceType == .text {
@@ -61,7 +64,7 @@ class MZBannerView: UIView {
             self.flowLayout.scale = self.itemZoomScale
         }
     }
-    /// item的间距
+    /// item的间距,默认为0.0
     public var itemSpacing: CGFloat = 0.0 {
         didSet {
             if self.resourceType == .text {
@@ -70,56 +73,56 @@ class MZBannerView: UIView {
             self.flowLayout.minimumLineSpacing = self.itemSpacing
         }
     }
-    /// item的圆角
+    /// item的圆角,默认为0.0
     public var itemCornerRadius: CGFloat = 0.0
-    /// item的边框
+    /// item的边框,默认为0.0
     public var itemBorderWidth: CGFloat = 0.0
-    /// item的边框颜色
+    /// item的边框颜色,默认为clear
     public var itemBorderColor: UIColor = UIColor.clear
-    /// 图片的填充模式
+    /// 图片的填充模式,默认为scaleToFill
     public var imageContentMode: UIView.ContentMode = .scaleToFill
     
-    /// 文本高度
+    /// 文本高度,默认为25.0
     public var titleViewHeight: CGFloat = 25.0
-    /// 文本颜色
+    /// 文本颜色,默认为white
     public var titleColor: UIColor = UIColor.white
-    /// 文本字体
+    /// 文本字体,默认为13
     public var titleFont: UIFont = UIFont.systemFont(ofSize: 13)
-    /// 文本对齐方式
+    /// 文本对齐方式,默认为left
     public var titleAlignment: NSTextAlignment = .left
-    /// 文本背景颜色
+    /// 文本背景颜色,默认为0.5的black
     public var titleBackgroundColor: UIColor = UIColor.black.withAlphaComponent(0.5)
     /// 文本默认为单行显示
     public var titleNumberOfLines = 1
     /// 文本的breakMode
     public var titleLineBreakMode: NSLineBreakMode = .byWordWrapping
     
-    /// 是否显示pageControl
+    /// 是否显示pageControl,默认为false
     public var showPageControl = false {
         didSet {
-            self.pageControl.isHidden = self.showPageControl
+            self.pageControl.isHidden = !self.showPageControl
         }
     }
-    /// pageControl的高度
+    /// pageControl的高度,默认为25.0
     public var pageControlHeight: CGFloat = 25.0 {
         didSet {
             self.pageControl.frame = CGRect(x: 0, y: self.bounds.height - self.pageControlHeight, width: self.bounds.width, height: self.pageControlHeight)
             self.pageControl.updateFrame()
         }
     }
-    /// pageControl的page间隔
+    /// pageControl的page间隔,默认为8.0
     public var pageControlSpacing: CGFloat = 8.0 {
         didSet {
             self.pageControl.pageSpacing = self.pageControlSpacing
         }
     }
-    /// pageControl的page位置
+    /// pageControl的page位置,默认为center
     public var pageControlAlignment: MZPageControlAlignment = .center {
         didSet {
             self.pageControl.alignment = self.pageControlAlignment
         }
     }
-    /// pageControl的page大小
+    /// pageControl的page大小,默认为(8.0,8.0)
     public var pageControlSize = CGSize(width: 8.0, height: 8.0) {
         didSet {
             self.pageControl.pageSize = self.pageControlSize
@@ -131,25 +134,25 @@ class MZBannerView: UIView {
             self.pageControl.currentPageSize = self.pageControlCurrentSize
         }
     }
-    /// pageControl的page颜色
+    /// pageControl的page颜色,默认为gray
     public var pageControlIndictirColor = UIColor.gray {
         didSet {
             self.pageControl.pageIndicatorTintColor = self.pageControlIndictirColor
         }
     }
-    /// pageControl的当前page颜色
+    /// pageControl的当前page颜色,默认为white
     public var pageControlCurrentIndictirColor = UIColor.white {
         didSet {
             self.pageControl.currentPageIndicatorTintColor = self.pageControlCurrentIndictirColor
         }
     }
-    ///  pageControl的page圆角
+    /// pageControl的page圆角
     public var pageControlRadius: CGFloat? {
         didSet {
             self.pageControl.pageCornerRadius = self.pageControlRadius
         }
     }
-    ///  pageControl的当前page圆角
+    /// pageControl的当前page圆角
     public var pageControlCurrentRadius: CGFloat? {
         didSet {
             self.pageControl.currentPageCornerRadius = self.pageControlCurrentRadius
@@ -198,7 +201,7 @@ class MZBannerView: UIView {
         collectionView.dataSource = self
         collectionView.scrollsToTop = false
         collectionView.decelerationRate = UIScrollView.DecelerationRate(rawValue: 0.0)
-        collectionView.register(MZBannerViewCollectionViewCell.self, forCellWithReuseIdentifier: "cellIdentifier")
+        collectionView.register(MZBannerViewCollectionViewCell.self, forCellWithReuseIdentifier: "bannerViewCellId")
         return collectionView
     }()
     
@@ -318,6 +321,9 @@ extension MZBannerView {
     ///   - titleImagesGroup: 描述图标数组
     ///   - sizeGroup: 描述图标尺寸数组
     public func setTitleImagesGroup(_ titleImagesGroup: [UIImage]?, sizeGroup: [CGSize]?) {
+        if titleImagesGroup == nil || sizeGroup == nil {
+            return
+        }
         self.titleImagesGroup = titleImagesGroup!
         self.titleImageSizeGroup = sizeGroup!
         self.collectionView.reloadData()
@@ -329,6 +335,9 @@ extension MZBannerView {
     ///   - titleImageUrlsGroup: 描述图标数组
     ///   - sizeGroup: 描述图标尺寸数组
     public func setTitleImageUrlsGroup(_ titleImageUrlsGroup: [String]?, sizeGroup:[CGSize]?) {
+        if titleImageUrlsGroup == nil || sizeGroup == nil {
+            return
+        }
         self.titleImageUrlsGroup = titleImageUrlsGroup!
         self.titleImageSizeGroup = sizeGroup!
         self.collectionView.reloadData()
@@ -350,7 +359,7 @@ extension MZBannerView {
         self.dealFirstPage();
         self.pageControl.numberOfPages = self.realDataCount
         self.pageControl.currentPage = self.currentIndex() % self.realDataCount
-        if resourceType == .text  {
+        if self.resourceType == .text  {
             self.showPageControl = false
         }
         if isAutomatic {
@@ -365,7 +374,7 @@ extension MZBannerView: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellIdentifier", for: indexPath) as! MZBannerViewCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bannerViewCellId", for: indexPath) as! MZBannerViewCollectionViewCell
         let index = indexPath.item % self.realDataCount
         switch self.resourceType {
         case .image:
@@ -383,7 +392,7 @@ extension MZBannerView: UICollectionViewDataSource, UICollectionViewDelegate {
         case .text:
             break
         }
-        cell.titleContainerViewH = self.resourceType == .text ? collectionView.bounds.height : titleViewHeight
+        cell.titleContainerViewH = self.resourceType == .text ? collectionView.bounds.height : self.titleViewHeight
         cell.titleContainerView.backgroundColor = self.titleBackgroundColor
         cell.titleLabel.font = self.titleFont
         cell.titleLabel.textColor = self.titleColor
@@ -394,7 +403,7 @@ extension MZBannerView: UICollectionViewDataSource, UICollectionViewDelegate {
         let titleImageUrl = index < self.titleImageUrlsGroup.count ? self.titleImageUrlsGroup[index] : nil
         let titleImageSize = index < self.titleImageSizeGroup.count ? self.titleImageSizeGroup[index] : nil
         cell.attributeString(title, titleImageUrl: titleImageUrl, titleImage: titleImage, titleImageSize: titleImageSize)
-        cell.imageView.contentMode = imageContentMode
+        cell.imageView.contentMode = self.imageContentMode
         return cell;
     }
     

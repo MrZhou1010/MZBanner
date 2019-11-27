@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,8 @@
 		5A2DB457237FF2D100ABE304 /* MZBannerViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2DB456237FF2D100ABE304 /* MZBannerViewFlowLayout.swift */; };
 		5A2DB459237FF31200ABE304 /* MZBannerViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2DB458237FF31200ABE304 /* MZBannerViewCollectionViewCell.swift */; };
 		784A6B3E305921A928EE8CE6 /* libPods-MZBanner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC476A5594717A0C4827D1DB /* libPods-MZBanner.a */; };
+		B438D975238E4B5C008362C9 /* MZPageControlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B438D974238E4B5C008362C9 /* MZPageControlVC.swift */; };
+		B438D977238E4B8C008362C9 /* MZBannerViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B438D976238E4B8C008362C9 /* MZBannerViewVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		5A2DB456237FF2D100ABE304 /* MZBannerViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZBannerViewFlowLayout.swift; sourceTree = "<group>"; };
 		5A2DB458237FF31200ABE304 /* MZBannerViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZBannerViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		5FB1C60A3E41A6E5901EF5C0 /* Pods-MZBanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MZBanner.release.xcconfig"; path = "Target Support Files/Pods-MZBanner/Pods-MZBanner.release.xcconfig"; sourceTree = "<group>"; };
+		B438D974238E4B5C008362C9 /* MZPageControlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZPageControlVC.swift; sourceTree = "<group>"; };
+		B438D976238E4B8C008362C9 /* MZBannerViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZBannerViewVC.swift; sourceTree = "<group>"; };
 		CC476A5594717A0C4827D1DB /* libPods-MZBanner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MZBanner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -116,6 +120,8 @@
 				5A2DB450237FE02C00ABE304 /* MZBannerView */,
 				5A2DB422237FE00C00ABE304 /* AppDelegate.swift */,
 				5A2DB424237FE00C00ABE304 /* ViewController.swift */,
+				B438D974238E4B5C008362C9 /* MZPageControlVC.swift */,
+				B438D976238E4B8C008362C9 /* MZBannerViewVC.swift */,
 				5A2DB426237FE00C00ABE304 /* Main.storyboard */,
 				5A2DB429237FE00E00ABE304 /* Assets.xcassets */,
 				5A2DB42B237FE00E00ABE304 /* LaunchScreen.storyboard */,
@@ -334,6 +340,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B438D977238E4B8C008362C9 /* MZBannerViewVC.swift in Sources */,
+				B438D975238E4B5C008362C9 /* MZPageControlVC.swift in Sources */,
 				5A2DB425237FE00C00ABE304 /* ViewController.swift in Sources */,
 				5A2DB457237FF2D100ABE304 /* MZBannerViewFlowLayout.swift in Sources */,
 				5A2DB455237FEDCB00ABE304 /* MZBannerView.swift in Sources */,
