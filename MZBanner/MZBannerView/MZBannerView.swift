@@ -167,7 +167,7 @@ class MZBannerView: UIView {
     /// pageControl的当前page图片
     public var pageControlCurrentIndictorImage: UIImage? {
         didSet {
-            self.pageControl.currentPageImage = pageControlCurrentIndictorImage
+            self.pageControl.currentPageImage = self.pageControlCurrentIndictorImage
         }
     }
     
@@ -207,6 +207,9 @@ class MZBannerView: UIView {
     
     private lazy var pageControl: MZPageControl = {
         let pageControl = MZPageControl(frame: CGRect(x: 0, y: self.bounds.height - self.pageControlHeight, width: self.bounds.width, height: self.pageControlHeight))
+        pageControl.pageClickBlock = { (index) in
+            // self.timeRepeat()
+        }
         return pageControl
     }()
     
@@ -369,11 +372,11 @@ extension MZBannerView {
 }
 
 extension MZBannerView: UICollectionViewDataSource, UICollectionViewDelegate {
-    internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.itemsCount
     }
     
-    internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bannerViewCellId", for: indexPath) as! MZBannerViewCollectionViewCell
         let index = indexPath.item % self.realDataCount
         switch self.resourceType {
@@ -407,7 +410,7 @@ extension MZBannerView: UICollectionViewDataSource, UICollectionViewDelegate {
         return cell;
     }
     
-    private func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let centerViewPoint = convert(collectionView.center, to: collectionView)
         if let centerIndex = collectionView.indexPathForItem(at: centerViewPoint) {
             if indexPath.item == centerIndex.item {
@@ -416,7 +419,7 @@ extension MZBannerView: UICollectionViewDataSource, UICollectionViewDelegate {
                     self.didSelectedItem!(index)
                 }
             } else {
-                let scrollPosition: UICollectionView.ScrollPosition = scrollDirection == .horizontal ? .centeredHorizontally : .centeredVertically
+                let scrollPosition: UICollectionView.ScrollPosition = self.scrollDirection == .horizontal ? .centeredHorizontally : .centeredVertically
                 collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: true)
             }
         }
@@ -424,7 +427,7 @@ extension MZBannerView: UICollectionViewDataSource, UICollectionViewDelegate {
 }
 
 extension MZBannerView: UIScrollViewDelegate {
-    private func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if self.isAutomatic {
             self.endTimer()
             self.dealFirstPage()
@@ -432,19 +435,19 @@ extension MZBannerView: UIScrollViewDelegate {
         }
     }
     
-    private func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if self.isAutomatic {
             self.startTimer()
         }
     }
     
-    private func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.scrollViewDidEndScrollingAnimation(scrollView)
     }
     
-    private func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         let index = self.currentIndex() % self.realDataCount
-        pageControl.currentPage = index
+        self.pageControl.currentPage = index
         if self.didScrollToIndex != nil {
             self.didScrollToIndex!(index)
         }

@@ -30,15 +30,12 @@ class ViewController: UIViewController {
         self.view.addSubview(tableView)
         
         let bannerView = MZBannerView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 150))
-        //bannerView.placeholderImage = #imageLiteral(resourceName: "placeholder");
-        bannerView.setImageUrlsGroup(["http://t.cn/RYVfQep",
-                                      "http://t.cn/RYVfgeI",
-                                      "http://t.cn/RYVfsLo",
-                                      "http://t.cn/RYMuvvn",
-                                      "http://t.cn/RYVfnEO",
-                                      "http://t.cn/RYVf1fd"])
+        bannerView.placeholderImage = UIImage(named: "placeholder");
+        bannerView.setImageUrlsGroup(["http://t.cn/RYVfQep", "http://t.cn/RYVfgeI", "http://t.cn/RYVfsLo", "http://t.cn/RYMuvvn", "http://t.cn/RYVfnEO", "http://t.cn/RYVf1fd"])
         bannerView.pageControlSize = CGSize(width: 10, height: 10)
+        bannerView.pageControlCurrentSize = CGSize(width: 10, height: 10)
         bannerView.pageControlRadius = 5
+        bannerView.pageControlCurrentRadius = 5
         bannerView.pageControlAlignment = .center
         tableView.tableHeaderView = bannerView
     }
@@ -95,11 +92,14 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let titleLbl = UILabel(frame: CGRect(x: 10, y: 0, width: self.view.bounds.size.width, height: 30))
+        let sectionView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 40))
+        sectionView.backgroundColor = UIColor.darkGray.withAlphaComponent(0.2)
+        let titleLbl = UILabel(frame: CGRect(x: 12, y: 0, width: self.view.bounds.size.width - 20, height: 40))
         titleLbl.text = self.data[section]
         titleLbl.textColor = UIColor.black
         titleLbl.textAlignment = .left
-        return titleLbl
+        sectionView.addSubview(titleLbl)
+        return sectionView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
