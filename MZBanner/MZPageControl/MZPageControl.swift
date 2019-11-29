@@ -121,6 +121,14 @@ class MZPageControl: UIControl {
             self.updatePageNumber()
         }
     }
+    /// 是否可以点击page,默认为true
+    public var isClickEnable: Bool = true {
+        didSet {
+            for page in self.pages {
+                page.isUserInteractionEnabled = isClickEnable
+            }
+        }
+    }
     /// 点击page的回调
     public var pageClickBlock: ((_ index: Int) -> ())?
     /// page试图
@@ -139,7 +147,7 @@ class MZPageControl: UIControl {
             let frame = self.getFrame(index: i)
             let imageView = UIImageView(frame: frame)
             imageView.tag = 1000 + i
-            imageView.isUserInteractionEnabled = true
+            imageView.isUserInteractionEnabled = self.isClickEnable
             let tap = UITapGestureRecognizer(target: self, action: #selector(pageClick(tap:)))
             imageView.addGestureRecognizer(tap)
             self.addSubview(imageView)

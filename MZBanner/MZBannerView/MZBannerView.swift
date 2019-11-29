@@ -170,6 +170,12 @@ class MZBannerView: UIView {
             self.pageControl.currentPageImage = self.pageControlCurrentIndictorImage
         }
     }
+    /// pageControl的当前page图片
+    public var pageControlIsClickEnable: Bool = true {
+        didSet {
+            self.pageControl.isClickEnable = self.pageControlIsClickEnable
+        }
+    }
     
     /// 选中item的事件回调
     public var didSelectedItem: ((Int) -> ())?
