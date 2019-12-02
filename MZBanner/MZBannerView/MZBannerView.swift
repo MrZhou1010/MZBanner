@@ -103,6 +103,12 @@ class MZBannerView: UIView {
             self.pageControl.isHidden = !self.showPageControl
         }
     }
+    /// 是否可以点击pageControl的page,默认为true
+    public var pageControlIsClickEnable: Bool = true {
+        didSet {
+            self.pageControl.isClickEnable = self.pageControlIsClickEnable
+        }
+    }
     /// pageControl的高度,默认为25.0
     public var pageControlHeight: CGFloat = 25.0 {
         didSet {
@@ -170,12 +176,6 @@ class MZBannerView: UIView {
             self.pageControl.currentPageImage = self.pageControlCurrentIndictorImage
         }
     }
-    /// pageControl的当前page图片
-    public var pageControlIsClickEnable: Bool = true {
-        didSet {
-            self.pageControl.isClickEnable = self.pageControlIsClickEnable
-        }
-    }
     
     /// 选中item的事件回调
     public var didSelectedItem: ((Int) -> ())?
@@ -214,7 +214,8 @@ class MZBannerView: UIView {
     private lazy var pageControl: MZPageControl = {
         let pageControl = MZPageControl(frame: CGRect(x: 0, y: self.bounds.height - self.pageControlHeight, width: self.bounds.width, height: self.pageControlHeight))
         pageControl.pageClickBlock = { (index) in
-            // self.timeRepeat()
+            let targetIndex = self.itemsCount / 2 + index
+            self.scrollToItem(at: IndexPath(item: targetIndex, section: 0))
         }
         return pageControl
     }()
@@ -354,7 +355,7 @@ extension MZBannerView {
     
     private func setResource(_ titlesGroup: [String]?, attributedTitlesGroup: [NSAttributedString]?) {
         self.placeholderImageView.isHidden = true
-        self.itemsCount = self.realDataCount <= 1 || !self.isInfinite ? realDataCount : realDataCount * 200
+        self.itemsCount = self.realDataCount <= 1 || !self.isInfinite ? self.realDataCount : self.realDataCount * 200
         if attributedTitlesGroup != nil {
             self.titlesGroup = attributedTitlesGroup ?? []
         } else {
@@ -363,9 +364,9 @@ extension MZBannerView {
             }
             self.titlesGroup = titles ?? []
         }
-        self.collectionView.reloadData();
-        self.collectionView.setContentOffset(.zero, animated: false);
-        self.dealFirstPage();
+        self.collectionView.reloadData()
+        self.collectionView.setContentOffset(.zero, animated: false)
+        self.dealFirstPage()
         self.pageControl.numberOfPages = self.realDataCount
         self.pageControl.currentPage = self.currentIndex() % self.realDataCount
         if self.resourceType == .text  {
@@ -413,7 +414,7 @@ extension MZBannerView: UICollectionViewDataSource, UICollectionViewDelegate {
         let titleImageSize = index < self.titleImageSizeGroup.count ? self.titleImageSizeGroup[index] : nil
         cell.attributeString(title, titleImageUrl: titleImageUrl, titleImage: titleImage, titleImageSize: titleImageSize)
         cell.imageView.contentMode = self.imageContentMode
-        return cell;
+        return cell
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -425,8 +426,7 @@ extension MZBannerView: UICollectionViewDataSource, UICollectionViewDelegate {
                     self.didSelectedItem!(index)
                 }
             } else {
-                let scrollPosition: UICollectionView.ScrollPosition = self.scrollDirection == .horizontal ? .centeredHorizontally : .centeredVertically
-                collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: true)
+                self.scrollToItem(at: indexPath)
             }
         }
     }
@@ -464,7 +464,7 @@ extension MZBannerView: UIScrollViewDelegate {
 extension MZBannerView {
     /// 获取当前页
     private func currentIndex() -> Int {
-        let itemWH = self.scrollDirection == .horizontal ? self.flowLayout.itemSize.width + itemSpacing : self.flowLayout.itemSize.height + self.itemSpacing
+        let itemWH = self.scrollDirection == .horizontal ? self.flowLayout.itemSize.width + self.itemSpacing : self.flowLayout.itemSize.height + self.itemSpacing
         let offsetXY = self.scrollDirection == .horizontal ? self.collectionView.contentOffset.x : self.collectionView.contentOffset.y
         if itemWH == 0 {
             return 0
@@ -477,8 +477,7 @@ extension MZBannerView {
     private func dealFirstPage() {
         if self.currentIndex() == 0 && self.itemsCount > 1 && self.isInfinite {
             let targetIndex = self.itemsCount / 2
-            let scrollPosition: UICollectionView.ScrollPosition = self.scrollDirection == .horizontal ? .centeredHorizontally : .centeredVertically
-            self.collectionView.scrollToItem(at: IndexPath(item: targetIndex, section: 0), at: scrollPosition, animated: false)
+            self.scrollToItem(at: IndexPath(item: targetIndex, section: 0))
             if self.didScrollToIndex != nil {
                 self.didScrollToIndex!(0)
             }
@@ -489,9 +488,14 @@ extension MZBannerView {
     private func dealLastPage() {
         if self.currentIndex() == self.itemsCount - 1 && self.itemsCount > 1 && self.isInfinite {
             let targetIndex = self.itemsCount / 2 - 1
-            let scrollPosition: UICollectionView.ScrollPosition = self.scrollDirection == .horizontal ? .centeredHorizontally : .centeredVertically
-            self.collectionView.scrollToItem(at: IndexPath(item: targetIndex, section: 0), at: scrollPosition, animated: false)
+            self.scrollToItem(at: IndexPath(item: targetIndex, section: 0))
         }
+    }
+    
+    /// 滚动到某一项
+    private func scrollToItem(at indexPath: IndexPath) {
+        let scrollPosition: UICollectionView.ScrollPosition = self.scrollDirection == .horizontal ? .centeredHorizontally : .centeredVertically
+        self.collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: true)
     }
 }
 
@@ -527,7 +531,6 @@ extension MZBannerView {
             self.dealLastPage()
             targetIndex = itemsCount / 2
         }
-        let scrollPosition: UICollectionView.ScrollPosition = scrollDirection == .horizontal ? .centeredHorizontally : .centeredVertically
-        self.collectionView.scrollToItem(at: IndexPath(item: targetIndex, section: 0), at: scrollPosition, animated: true)
+        self.scrollToItem(at: IndexPath(item: targetIndex, section: 0))
     }
 }

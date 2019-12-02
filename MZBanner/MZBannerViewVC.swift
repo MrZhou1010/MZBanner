@@ -8,14 +8,17 @@
 
 import UIKit
 
+let isIphoneX: Bool = (UIApplication.shared.statusBarFrame.height == 44.0) ? true : false
+let kStatusNavBarHeight: CGFloat = isIphoneX ? 88.0 : 44.0
+
 class MZBannerViewVC: UIViewController {
     
     public var type: Int = 0
     
     private lazy var bannerView: MZBannerView = {
-        let bannerView: MZBannerView = MZBannerView(frame: CGRect(x: 0, y: 64, width: self.view.bounds.size.width, height: 160));
-        bannerView.placeholderImage = UIImage(named: "placeholder");
-        return bannerView;
+        let bannerView: MZBannerView = MZBannerView(frame: CGRect(x: 0.0, y: kStatusNavBarHeight, width: self.view.bounds.size.width, height: 160.0))
+        bannerView.placeholderImage = UIImage(named: "placeholder")
+        return bannerView
     }()
     
     override func viewDidLoad() {
@@ -27,6 +30,7 @@ class MZBannerViewVC: UIViewController {
         switch self.type {
         case 0:
             let localImages: [UIImage] = [UIImage(named: "baner_pic1")!, UIImage(named: "baner_pic2")!, UIImage(named: "baner_pic3")!, UIImage(named: "baner_pic4")!]
+            self.bannerView.isAutomatic = false
             self.bannerView.setImagesGroup(localImages)
             self.bannerView.itemSize = CGSize(width: self.view.bounds.size.width - 100, height: (self.view.bounds.size.width - 100) * 300 / 750)
             self.bannerView.itemSpacing = 40
@@ -34,7 +38,8 @@ class MZBannerViewVC: UIViewController {
             
             self.bannerView.itemBorderWidth = 1.0
             self.bannerView.itemBorderColor = UIColor.gray
-            
+            self.bannerView.itemCornerRadius = 10.0
+                        
             self.bannerView.didSelectedItem = {
                 print("点击第\($0)个item")
             }
@@ -82,6 +87,7 @@ class MZBannerViewVC: UIViewController {
         case 3:
             let imageUrls: [String] = ["http://chatm-icon.oss-cn-beijing.aliyuncs.com/pic/pic_20171101181927887.jpg",  "http://chatm-icon.oss-cn-beijing.aliyuncs.com/pic/pic_20171114171645011.jpg",  "http://chatm-icon.oss-cn-beijing.aliyuncs.com/pic/pic_20171114172009707.png"]
             self.bannerView.placeholderImage = UIImage(named: "placeholder")
+            self.bannerView.isInfinite = false
             self.bannerView.setImageUrlsGroup(imageUrls, titlesGroup: nil, attributedTitlesGroup: nil)
             self.bannerView.pageControlIndictirColor = UIColor.green
             self.bannerView.pageControlCurrentIndictirColor = UIColor.red

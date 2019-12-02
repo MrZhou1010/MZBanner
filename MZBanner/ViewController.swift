@@ -73,7 +73,7 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
         if indexPath.row < self.data.count {
             cell?.textLabel?.text = self.data[indexPath.row]
         } else if indexPath.row == self.data.count {
-            let banner = MZBannerView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 150));
+            let banner = MZBannerView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 150))
             banner.timeInterval = 3
             banner.setImageUrlsGroup(["http://chatm-icon.oss-cn-beijing.aliyuncs.com/pic/pic_20171101181927887.jpg",
                                       "http://chatm-icon.oss-cn-beijing.aliyuncs.com/pic/pic_20171114171645011.jpg",

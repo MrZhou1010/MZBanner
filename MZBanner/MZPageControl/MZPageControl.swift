@@ -125,7 +125,7 @@ class MZPageControl: UIControl {
     public var isClickEnable: Bool = true {
         didSet {
             for page in self.pages {
-                page.isUserInteractionEnabled = isClickEnable
+                page.isUserInteractionEnabled = self.isClickEnable
             }
         }
     }
