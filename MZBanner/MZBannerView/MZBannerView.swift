@@ -93,7 +93,7 @@ class MZBannerView: UIView {
     /// 文本背景颜色,默认为0.5的black
     public var titleBackgroundColor: UIColor = UIColor.black.withAlphaComponent(0.5)
     /// 文本默认为单行显示
-    public var titleNumberOfLines = 1
+    public var titleNumberOfLines: Int = 1
     /// 文本的breakMode
     public var titleLineBreakMode: NSLineBreakMode = .byWordWrapping
     
@@ -141,15 +141,15 @@ class MZBannerView: UIView {
         }
     }
     /// pageControl的page颜色,默认为gray
-    public var pageControlIndictirColor = UIColor.gray {
+    public var pageControlIndictorColor = UIColor.gray {
         didSet {
-            self.pageControl.pageIndicatorTintColor = self.pageControlIndictirColor
+            self.pageControl.pageIndicatorTintColor = self.pageControlIndictorColor
         }
     }
     /// pageControl的当前page颜色,默认为white
-    public var pageControlCurrentIndictirColor = UIColor.white {
+    public var pageControlCurrentIndictorColor = UIColor.white {
         didSet {
-            self.pageControl.currentPageIndicatorTintColor = self.pageControlCurrentIndictirColor
+            self.pageControl.currentPageIndicatorTintColor = self.pageControlCurrentIndictorColor
         }
     }
     /// pageControl的page圆角
@@ -214,7 +214,7 @@ class MZBannerView: UIView {
     private lazy var pageControl: MZPageControl = {
         let pageControl = MZPageControl(frame: CGRect(x: 0, y: self.bounds.height - self.pageControlHeight, width: self.bounds.width, height: self.pageControlHeight))
         pageControl.pageClickBlock = { (index) in
-            let targetIndex = self.itemsCount / 2 + index
+            let targetIndex = self.isInfinite ? self.itemsCount / 2 + index : index
             self.scrollToItem(at: IndexPath(item: targetIndex, section: 0))
         }
         return pageControl

@@ -54,7 +54,6 @@ class MZBannerViewCollectionViewCell: UICollectionViewCell {
         self.imageView.kf.setImage(with: url, placeholder: placeholder)
     }
     
-    
     /// 设置描述文本及图标
     public func attributeString(_ attributeString: NSAttributedString?, titleImageUrl: String? = nil, titleImage: UIImage? = nil, titleImageSize: CGSize? = nil) {
         self.titleLabel.attributedText = attributeString
@@ -63,7 +62,7 @@ class MZBannerViewCollectionViewCell: UICollectionViewCell {
         let containerViewSize = self.titleContainerView.bounds.size
         if let imageSize = titleImageSize {
             self.titleImageView.frame = CGRect(x: 5, y: (containerViewSize.height - imageSize.height) / 2, width: imageSize.width, height: imageSize.height)
-            self.titleLabel.frame = CGRect(x: 6 + imageSize.width, y: 0, width: containerViewSize.width - 6 - imageSize.width - 5, height: containerViewSize.height)
+            self.titleLabel.frame = CGRect(x: 8 + imageSize.width, y: 0, width: containerViewSize.width - 8 - imageSize.width - 5, height: containerViewSize.height)
         } else {
             self.titleImageView.frame = CGRect.zero
             self.titleLabel.frame = CGRect(x: 5, y: 0, width: containerViewSize.width - 10, height: containerViewSize.height)
