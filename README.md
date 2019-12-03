@@ -4,7 +4,7 @@
 
 效果图：
 
-![image](https://github.com/MrZhou1010/MZBanner/DemoImage/blob/master/demo1.png)![image](https://github.com/MrZhou1010/MZBanner/DemoImage/blob/master/demo2.png)![image](https://github.com/MrZhou1010/MZBanner/DemoImage/blob/master/demo3.png)![image](https://github.com/MrZhou1010/MZBanner/DemoImage/blob/master/demo4.png)![image](https://github.com/MrZhou1010/MZBanner/DemoImage/blob/master/demo5.png)![image](https://github.com/MrZhou1010/MZBanner/DemoImage/blob/master/demo6.png)
+![image](https://github.com/MrZhou1010/MZBanner/demoImage/blob/master/demo1.png)![image](https://github.com/MrZhou1010/MZBanner/demoImage/blob/master/demo2.png)![image](https://github.com/MrZhou1010/MZBanner/demoImage/blob/master/demo3.png)![image](https://github.com/MrZhou1010/MZBanner/demoImage/blob/master/demo4.png)![image](https://github.com/MrZhou1010/MZBanner/demoImage/blob/master/demo5.png)![image](https://github.com/MrZhou1010/MZBanner/demoImage/blob/master/demo6.png)
 
 实现：
 
