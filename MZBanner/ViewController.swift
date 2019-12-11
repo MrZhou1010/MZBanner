@@ -12,12 +12,11 @@ class ViewController: UIViewController {
     
     var data: [String] = ["MZPageControl", "MZBannerView"]
     var pageControlData = ["默认", "颜色","位置", "大小", "圆角", "图片"]
-    var BannerViewData = ["本地图片", "本地图片+描述文本", "文本", "网络图片", "网络图片+描述文本"]
+    var bannerViewData = ["本地图片", "本地图片+描述文本", "文本", "网络图片", "网络图片+描述文本"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         self.title = "MZBanner"
         self.setupUI()
     }
@@ -57,7 +56,7 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
         if section == 0 {
             return self.pageControlData.count
         } else if section == 1 {
-            return self.BannerViewData.count
+            return self.bannerViewData.count
         } else {
             return 0
         }
@@ -72,7 +71,7 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
         if indexPath.section == 0 {
             cell?.textLabel?.text = self.pageControlData[indexPath.row]
         } else if indexPath.section == 1 {
-            cell?.textLabel?.text = self.BannerViewData[indexPath.row]
+            cell?.textLabel?.text = self.bannerViewData[indexPath.row]
         }
         return cell!
     }
@@ -102,7 +101,7 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 40
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

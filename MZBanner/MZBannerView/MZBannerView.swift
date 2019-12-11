@@ -190,7 +190,7 @@ class MZBannerView: UIView {
     
     private lazy var flowLayout: MZBannerViewFlowLayout = {
         let flowLayout = MZBannerViewFlowLayout()
-        flowLayout.itemSize = self.itemSize != nil ? self.itemSize! : bounds.size
+        flowLayout.itemSize = self.itemSize != nil ? self.itemSize! : self.bounds.size
         flowLayout.minimumInteritemSpacing = 10000
         flowLayout.minimumLineSpacing = self.itemSpacing
         flowLayout.scrollDirection = self.scrollDirection
@@ -220,7 +220,9 @@ class MZBannerView: UIView {
         return pageControl
     }()
     
+    /// item的个数
     private var itemsCount: Int = 0
+    /// 实际数据的个数
     private var realDataCount: Int = 0
     private var resourceType: MZBannerResourceType = .image
     private var timer: Timer?
@@ -253,7 +255,7 @@ class MZBannerView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.flowLayout.itemSize = self.itemSize != nil ? self.itemSize! : bounds.size
+        self.flowLayout.itemSize = self.itemSize != nil ? self.itemSize! : self.bounds.size
         self.collectionView.frame = self.bounds
         self.collectionView.setContentOffset(.zero, animated: false)
         self.pageControl.frame = CGRect(x: 0, y: self.bounds.height - self.pageControlHeight, width: self.bounds.width, height: self.pageControlHeight)
@@ -508,20 +510,20 @@ extension MZBannerView {
             return
         }
         self.endTimer()
-        self.timer = Timer(timeInterval: Double(self.timeInterval), target: self, selector: #selector(timeRepeat), userInfo: nil, repeats: true)
+        self.timer = Timer(timeInterval: Double(self.timeInterval), target: self, selector: #selector(timeRepeatAction), userInfo: nil, repeats: true)
         RunLoop.main.add(self.timer!, forMode: RunLoop.Mode.common)
     }
     
     /// 结束定时器
     private func endTimer() {
-        if timer != nil {
-            timer?.invalidate()
-            timer = nil
+        if self.timer != nil {
+            self.timer?.invalidate()
+            self.timer = nil
         }
     }
     
     /// 定时器任务
-    @objc func timeRepeat() {
+    @objc func timeRepeatAction() {
         let currentIndex = self.currentIndex()
         var targetIndex = currentIndex + 1
         if currentIndex == self.itemsCount - 1 {
@@ -529,7 +531,7 @@ extension MZBannerView {
                 return
             }
             self.dealLastPage()
-            targetIndex = itemsCount / 2
+            targetIndex = self.itemsCount / 2
         }
         self.scrollToItem(at: IndexPath(item: targetIndex, section: 0))
     }

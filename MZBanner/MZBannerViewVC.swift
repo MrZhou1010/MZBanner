@@ -9,14 +9,14 @@
 import UIKit
 
 let isIphoneX: Bool = (UIApplication.shared.statusBarFrame.height == 44.0) ? true : false
-let kStatusNavBarHeight: CGFloat = isIphoneX ? 88.0 : 44.0
+let kStatusNavBarHeight: CGFloat = isIphoneX ? 88.0 : 64.0
 
 class MZBannerViewVC: UIViewController {
     
     public var type: Int = 0
     
     private lazy var bannerView: MZBannerView = {
-        let bannerView: MZBannerView = MZBannerView(frame: CGRect(x: 0.0, y: kStatusNavBarHeight, width: self.view.bounds.size.width, height: 160.0))
+        let bannerView: MZBannerView = MZBannerView(frame: CGRect(x: 0, y: kStatusNavBarHeight, width: self.view.bounds.size.width, height: 160))
         bannerView.placeholderImage = UIImage(named: "placeholder")
         return bannerView
     }()
@@ -79,7 +79,7 @@ class MZBannerViewVC: UIViewController {
                                     "GitHub: https://github.com",
                                     "如有问题，欢迎issue或者联系邮箱",
                                     "欢迎star✨✨✨✨✨✨，谢谢支持!"]
-            let titleImages = [#imageLiteral(resourceName: "activity"),#imageLiteral(resourceName: "activity"),#imageLiteral(resourceName: "activity")]
+            let titleImages: [UIImage] = [UIImage(named: "activity")!, UIImage(named: "activity")!, UIImage(named: "activity")!]
             let sizeGroup = [CGSize(width: 30, height: 15), CGSize(width: 30, height: 15), CGSize(width: 30, height: 15)]
             self.bannerView.setTitlesGroup(titles, attributedTitlesGroup: nil)
             self.bannerView.setTitleImagesGroup(titleImages, sizeGroup: sizeGroup)

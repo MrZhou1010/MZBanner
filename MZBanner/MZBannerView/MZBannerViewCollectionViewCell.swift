@@ -36,8 +36,8 @@ class MZBannerViewCollectionViewCell: UICollectionViewCell {
     
     private func setupTitleLabel() {
         self.titleContainerView = UIView(frame: CGRect(x: 0, y: self.contentView.bounds.size.height - self.titleContainerViewH, width: self.contentView.bounds.size.width, height: self.titleContainerViewH))
-        titleContainerView.isHidden = true
-        self.contentView.addSubview(titleContainerView)
+        self.titleContainerView.isHidden = true
+        self.contentView.addSubview(self.titleContainerView)
         self.titleImageView = UIImageView()
         self.titleContainerView.addSubview(self.titleImageView)
         self.titleLabel = UILabel()

@@ -21,12 +21,12 @@ class MZBannerViewFlowLayout: UICollectionViewFlowLayout {
     override func prepare() {
         super.prepare()
         if let collectionView = collectionView {
-            if scrollDirection == .horizontal {
-                let offset = (collectionView.frame.size.width - itemSize.width) / 2
-                sectionInset = UIEdgeInsets(top: 0, left: offset, bottom: 0, right: 0)
+            if self.scrollDirection == .horizontal {
+                let offset = (collectionView.frame.size.width - self.itemSize.width) / 2
+                self.sectionInset = UIEdgeInsets(top: 0, left: offset, bottom: 0, right: 0)
             } else {
-                let offset = (collectionView.frame.size.height - itemSize.height) / 2
-                sectionInset = UIEdgeInsets(top: offset, left: 0, bottom: 0, right: 0)
+                let offset = (collectionView.frame.size.height - self.itemSize.height) / 2
+                self.sectionInset = UIEdgeInsets(top: offset, left: 0, bottom: 0, right: 0)
             }
         }
     }
@@ -36,23 +36,23 @@ class MZBannerViewFlowLayout: UICollectionViewFlowLayout {
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        if let attributes = super.layoutAttributesForElements(in: rect), let collectionView = collectionView {
+        if let attributes = super.layoutAttributesForElements(in: rect), let collectionView = self.collectionView {
             let attriArr = NSArray(array: attributes, copyItems: true) as! [UICollectionViewLayoutAttributes]
             for attri in attriArr {
                 var scale: CGFloat = 1
                 var absOffset: CGFloat = 0
                 let centerX = collectionView.bounds.size.width * 0.5 + collectionView.contentOffset.x
                 let centerY = collectionView.bounds.size.height * 0.5 + collectionView.contentOffset.y
-                if scrollDirection == .horizontal {
+                if self.scrollDirection == .horizontal {
                     absOffset = abs(attri.center.x - centerX)
-                    let distance = itemSize.width + minimumLineSpacing
+                    let distance = self.itemSize.width + self.minimumLineSpacing
                     if absOffset < distance {
                         scale = (1 - absOffset / distance) * (self.scale - 1) + 1
                         attri.zIndex = 1
                     }
                 } else {
                     absOffset = abs(attri.center.y - centerY)
-                    let distance = itemSize.height + minimumLineSpacing
+                    let distance = self.itemSize.height + self.minimumLineSpacing
                     if absOffset < distance {
                         scale = (1 - absOffset / distance) * (self.scale - 1) + 1
                         attri.zIndex = 1
@@ -68,18 +68,18 @@ class MZBannerViewFlowLayout: UICollectionViewFlowLayout {
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         var minSpace = CGFloat.greatestFiniteMagnitude
         var offset = proposedContentOffset
-        if let collectionView = collectionView {
+        if let collectionView = self.collectionView {
             let centerX = offset.x + collectionView.bounds.size.width / 2
             let centerY = offset.y + collectionView.bounds.size.height / 2
             var visibleRect: CGRect
-            if scrollDirection == .horizontal {
+            if self.scrollDirection == .horizontal {
                 visibleRect = CGRect(origin: CGPoint(x: offset.x, y: 0), size: collectionView.bounds.size)
             } else {
                 visibleRect = CGRect(origin: CGPoint(x: 0, y: offset.y), size: collectionView.bounds.size)
             }
             if let attriArr = self.layoutAttributesForElements(in: visibleRect) {
                 for attri in attriArr {
-                    if scrollDirection == .horizontal {
+                    if self.scrollDirection == .horizontal {
                         if abs(minSpace) > abs(attri.center.x - centerX) {
                             minSpace = attri.center.x - centerX
                         }
@@ -90,7 +90,7 @@ class MZBannerViewFlowLayout: UICollectionViewFlowLayout {
                     }
                 }
             }
-            if scrollDirection == .horizontal {
+            if self.scrollDirection == .horizontal {
                 offset.x += minSpace
             } else {
                 offset.y += minSpace
