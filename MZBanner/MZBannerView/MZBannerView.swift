@@ -479,7 +479,7 @@ extension MZBannerView {
     private func dealFirstPage() {
         if self.currentIndex() == 0 && self.itemsCount > 1 && self.isInfinite {
             let targetIndex = self.itemsCount / 2
-            self.scrollToItem(at: IndexPath(item: targetIndex, section: 0))
+            self.scrollToItem(at: IndexPath(item: targetIndex, section: 0), animated: false)
             if self.didScrollToIndex != nil {
                 self.didScrollToIndex!(0)
             }
@@ -490,14 +490,14 @@ extension MZBannerView {
     private func dealLastPage() {
         if self.currentIndex() == self.itemsCount - 1 && self.itemsCount > 1 && self.isInfinite {
             let targetIndex = self.itemsCount / 2 - 1
-            self.scrollToItem(at: IndexPath(item: targetIndex, section: 0))
+            self.scrollToItem(at: IndexPath(item: targetIndex, section: 0), animated: false)
         }
     }
     
     /// 滚动到某一项
-    private func scrollToItem(at indexPath: IndexPath) {
+    private func scrollToItem(at indexPath: IndexPath, animated: Bool = true) {
         let scrollPosition: UICollectionView.ScrollPosition = self.scrollDirection == .horizontal ? .centeredHorizontally : .centeredVertically
-        self.collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: true)
+        self.collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: animated)
     }
 }
 
