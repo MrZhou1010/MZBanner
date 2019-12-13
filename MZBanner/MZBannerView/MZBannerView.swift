@@ -15,6 +15,7 @@ enum MZBannerResourceType {
 }
 
 class MZBannerView: UIView {
+    
     /// 自动轮播,默认为true
     public var isAutomatic: Bool = true
     /// 无穷值,默认为true
@@ -42,6 +43,8 @@ class MZBannerView: UIView {
             self.placeholderImageView.image = self.placeholderImage
         }
     }
+    
+    // MARK: - Item
     /// item的大小
     public var itemSize: CGSize? {
         didSet {
@@ -82,6 +85,7 @@ class MZBannerView: UIView {
     /// 图片的填充模式,默认为scaleToFill
     public var imageContentMode: UIView.ContentMode = .scaleToFill
     
+    // MARK: - Title
     /// 文本高度,默认为25.0
     public var titleViewHeight: CGFloat = 25.0
     /// 文本颜色,默认为white
@@ -97,6 +101,7 @@ class MZBannerView: UIView {
     /// 文本的breakMode
     public var titleLineBreakMode: NSLineBreakMode = .byWordWrapping
     
+    // MARK: - PageControl
     /// 是否显示pageControl,默认为false
     public var showPageControl = false {
         didSet {
@@ -182,6 +187,7 @@ class MZBannerView: UIView {
     /// 滚动到某一位置的事件回调
     public var didScrollToIndex: ((Int) -> ())?
     
+    // MARK: - Lazy
     private lazy var placeholderImageView: UIImageView = {
         let placeholderImageView = UIImageView(frame: self.bounds)
         placeholderImageView.image = self.placeholderImage
@@ -234,6 +240,7 @@ class MZBannerView: UIView {
     private var titleImageUrlsGroup = [String]()
     private var titleImageSizeGroup = [CGSize]()
     
+    // MARK: - 初始化和UI
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupUI()
@@ -270,6 +277,7 @@ class MZBannerView: UIView {
     }
 }
 
+// MARK: - 设置数据
 extension MZBannerView {
     /// 设置本地轮播图片
     ///
@@ -380,6 +388,7 @@ extension MZBannerView {
     }
 }
 
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension MZBannerView: UICollectionViewDataSource, UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.itemsCount
@@ -434,6 +443,7 @@ extension MZBannerView: UICollectionViewDataSource, UICollectionViewDelegate {
     }
 }
 
+// MARK: - UIScrollViewDelegate
 extension MZBannerView: UIScrollViewDelegate {
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if self.isAutomatic {
@@ -462,7 +472,7 @@ extension MZBannerView: UIScrollViewDelegate {
     }
 }
 
-/// Mark: -- 处理第一页和最后一页
+// MARK: - 处理第一页和最后一页
 extension MZBannerView {
     /// 获取当前页
     private func currentIndex() -> Int {
@@ -501,7 +511,7 @@ extension MZBannerView {
     }
 }
 
-/// Mark: -- timer
+// MARK: - Timer
 extension MZBannerView {
     /// 开启定时器
     private func startTimer() {

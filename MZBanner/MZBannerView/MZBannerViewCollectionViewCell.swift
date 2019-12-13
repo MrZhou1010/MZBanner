@@ -17,6 +17,7 @@ class MZBannerViewCollectionViewCell: UICollectionViewCell {
     public var titleContainerView: UIView!
     public var titleContainerViewH: CGFloat = 25
     
+    // MARK: - 初始化和UI
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupImageView()
@@ -45,6 +46,7 @@ class MZBannerViewCollectionViewCell: UICollectionViewCell {
         self.titleContainerView.addSubview(self.titleLabel)
     }
     
+    // MARK: - Function
     /// 设置本地图或者网络图
     public func imageUrl(_ imageUrl: String?, placeholder: UIImage?) {
         guard let imageUrl = imageUrl, let url = URL(string: imageUrl) else {
