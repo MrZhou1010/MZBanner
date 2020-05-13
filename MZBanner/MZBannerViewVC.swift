@@ -23,10 +23,8 @@ class MZBannerViewVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
         self.view.addSubview(self.bannerView)
-        
         switch self.type {
         case 0:
             let localImages: [UIImage] = [UIImage(named: "baner_pic1")!, UIImage(named: "baner_pic2")!, UIImage(named: "baner_pic3")!, UIImage(named: "baner_pic4")!]
@@ -35,11 +33,9 @@ class MZBannerViewVC: UIViewController {
             self.bannerView.itemSize = CGSize(width: self.view.bounds.size.width - 100, height: (self.view.bounds.size.width - 100) * 300 / 750)
             self.bannerView.itemSpacing = 40
             self.bannerView.itemZoomScale = 1.2
-            
             self.bannerView.itemBorderWidth = 1.0
             self.bannerView.itemBorderColor = UIColor.gray
             self.bannerView.itemCornerRadius = 10.0
-            
             self.bannerView.didSelectedItem = {
                 print("点击第\($0)个item")
             }
@@ -63,14 +59,11 @@ class MZBannerViewVC: UIViewController {
             self.bannerView.itemSize = CGSize(width: self.view.bounds.size.width - 50, height: (self.view.bounds.size.width - 50) * 300 / 750)
             self.bannerView.timeInterval = 3
             self.bannerView.itemSpacing = 10
-            
             self.bannerView.titleBackgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
             self.bannerView.titleNumberOfLines = 0
             self.bannerView.titleViewHeight = 40
             self.bannerView.itemBorderWidth = 1.0
-            
             self.bannerView.showPageControl = false
-            
             self.bannerView.didSelectedItem = {
                 print("点击第\($0)个item")
             }
@@ -102,7 +95,6 @@ class MZBannerViewVC: UIViewController {
             self.bannerView.pageControlIndictorColor = UIColor.green
             self.bannerView.pageControlCurrentIndictorColor = UIColor.red
             self.bannerView.scrollDirection = .vertical
-            
             self.bannerView.didSelectedItem = {
                 print("点击第\($0)个item")
             }
@@ -119,11 +111,9 @@ class MZBannerViewVC: UIViewController {
             self.bannerView.pageControlCurrentSize = CGSize(width: 16, height: 6)
             self.bannerView.pageControlIndictorColor = UIColor.red
             self.bannerView.pageControlCurrentIndictorColor = UIColor.blue
-            
             self.bannerView.itemSize = CGSize(width: 240, height: 90)
             self.bannerView.itemZoomScale = 1.2
             self.bannerView.itemSpacing = 20
-            
             self.bannerView.didSelectedItem = {
                 print("点击第\($0)个item")
             }

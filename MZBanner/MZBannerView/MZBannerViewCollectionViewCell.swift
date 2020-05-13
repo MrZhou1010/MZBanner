@@ -12,10 +12,14 @@ import Kingfisher
 class MZBannerViewCollectionViewCell: UICollectionViewCell {
     
     public var imageView: UIImageView!
+    
     public var titleLabel: UILabel!
+    
     public var titleImageView: UIImageView!
+    
     public var titleContainerView: UIView!
-    public var titleContainerViewH: CGFloat = 25
+    
+    public var titleContainerViewH: CGFloat = 25.0
     
     // MARK: - 初始化和UI
     override init(frame: CGRect) {
@@ -63,7 +67,7 @@ class MZBannerViewCollectionViewCell: UICollectionViewCell {
         self.titleContainerView.isHidden = (attributeString == nil || attributeString?.string == "") ? true : false
         let containerViewSize = self.titleContainerView.bounds.size
         if let imageSize = titleImageSize {
-            self.titleImageView.frame = CGRect(x: 5, y: (containerViewSize.height - imageSize.height) / 2, width: imageSize.width, height: imageSize.height)
+            self.titleImageView.frame = CGRect(x: 5, y: (containerViewSize.height - imageSize.height) / 2.0, width: imageSize.width, height: imageSize.height)
             self.titleLabel.frame = CGRect(x: 8 + imageSize.width, y: 0, width: containerViewSize.width - 8 - imageSize.width - 5, height: containerViewSize.height)
         } else {
             self.titleImageView.frame = CGRect.zero

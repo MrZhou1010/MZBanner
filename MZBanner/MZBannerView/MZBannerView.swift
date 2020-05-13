@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum MZBannerResourceType {
+public enum MZBannerResourceType {
     case image
     case imageUrl
     case text
@@ -18,6 +18,7 @@ class MZBannerView: UIView {
     
     /// 自动轮播,默认为true
     public var isAutomatic: Bool = true
+    
     /// 无穷值,默认为true
     public var isInfinite: Bool = true {
         didSet {
@@ -29,14 +30,17 @@ class MZBannerView: UIView {
             }
         }
     }
+    
     /// 轮播时间间隔,默认为2s
     public var timeInterval: Int = 2
+    
     /// 轮播方向,默认为水平
     public var scrollDirection: UICollectionView.ScrollDirection = .horizontal {
         didSet {
             self.flowLayout.scrollDirection = self.scrollDirection
         }
     }
+    
     /// 占位图(url图片未加载前显示的图)
     public var placeholderImage: UIImage? = nil {
         didSet {
@@ -58,6 +62,7 @@ class MZBannerView: UIView {
             }
         }
     }
+    
     /// 中间item的放大比例,默认为1.0
     public var itemZoomScale: CGFloat = 1.0 {
         didSet {
@@ -67,6 +72,7 @@ class MZBannerView: UIView {
             self.flowLayout.scale = self.itemZoomScale
         }
     }
+    
     /// item的间距,默认为0.0
     public var itemSpacing: CGFloat = 0.0 {
         didSet {
@@ -76,28 +82,38 @@ class MZBannerView: UIView {
             self.flowLayout.minimumLineSpacing = self.itemSpacing
         }
     }
+    
     /// item的圆角,默认为0.0
     public var itemCornerRadius: CGFloat = 0.0
+    
     /// item的边框,默认为0.0
     public var itemBorderWidth: CGFloat = 0.0
+    
     /// item的边框颜色,默认为clear
     public var itemBorderColor: UIColor = UIColor.clear
+    
     /// 图片的填充模式,默认为scaleToFill
     public var imageContentMode: UIView.ContentMode = .scaleToFill
     
     // MARK: - Title
     /// 文本高度,默认为25.0
     public var titleViewHeight: CGFloat = 25.0
+    
     /// 文本颜色,默认为white
     public var titleColor: UIColor = UIColor.white
+    
     /// 文本字体,默认为13
     public var titleFont: UIFont = UIFont.systemFont(ofSize: 13)
+    
     /// 文本对齐方式,默认为left
     public var titleAlignment: NSTextAlignment = .left
+    
     /// 文本背景颜色,默认为0.5的black
     public var titleBackgroundColor: UIColor = UIColor.black.withAlphaComponent(0.5)
+    
     /// 文本默认为单行显示
     public var titleNumberOfLines: Int = 1
+    
     /// 文本的breakMode
     public var titleLineBreakMode: NSLineBreakMode = .byWordWrapping
     
@@ -108,12 +124,14 @@ class MZBannerView: UIView {
             self.pageControl.isHidden = !self.showPageControl
         }
     }
+    
     /// 是否可以点击pageControl的page,默认为true
     public var pageControlIsClickEnable: Bool = true {
         didSet {
             self.pageControl.isClickEnable = self.pageControlIsClickEnable
         }
     }
+    
     /// pageControl的高度,默认为25.0
     public var pageControlHeight: CGFloat = 25.0 {
         didSet {
@@ -121,60 +139,70 @@ class MZBannerView: UIView {
             self.pageControl.updateFrame()
         }
     }
+    
     /// pageControl的page间隔,默认为8.0
     public var pageControlSpacing: CGFloat = 8.0 {
         didSet {
             self.pageControl.pageSpacing = self.pageControlSpacing
         }
     }
+    
     /// pageControl的page位置,默认为center
     public var pageControlAlignment: MZPageControlAlignment = .center {
         didSet {
             self.pageControl.alignment = self.pageControlAlignment
         }
     }
+    
     /// pageControl的page大小,默认为(8.0,8.0)
     public var pageControlSize = CGSize(width: 8.0, height: 8.0) {
         didSet {
             self.pageControl.pageSize = self.pageControlSize
         }
     }
+    
     /// pageControl的当前page大小
     public var pageControlCurrentSize: CGSize? {
         didSet {
             self.pageControl.currentPageSize = self.pageControlCurrentSize
         }
     }
+    
     /// pageControl的page颜色,默认为gray
     public var pageControlIndictorColor = UIColor.gray {
         didSet {
             self.pageControl.pageIndicatorTintColor = self.pageControlIndictorColor
         }
     }
+    
     /// pageControl的当前page颜色,默认为white
     public var pageControlCurrentIndictorColor = UIColor.white {
         didSet {
             self.pageControl.currentPageIndicatorTintColor = self.pageControlCurrentIndictorColor
         }
     }
+    
     /// pageControl的page圆角
     public var pageControlRadius: CGFloat? {
         didSet {
             self.pageControl.pageCornerRadius = self.pageControlRadius
         }
     }
+    
     /// pageControl的当前page圆角
     public var pageControlCurrentRadius: CGFloat? {
         didSet {
             self.pageControl.currentPageCornerRadius = self.pageControlCurrentRadius
         }
     }
+    
     /// pageControl的page图片
     public var pageControlIndictorImage: UIImage? {
         didSet {
             self.pageControl.pageImage = self.pageControlIndictorImage
         }
     }
+    
     /// pageControl的当前page图片
     public var pageControlCurrentIndictorImage: UIImage? {
         didSet {
@@ -184,6 +212,7 @@ class MZBannerView: UIView {
     
     /// 选中item的事件回调
     public var didSelectedItem: ((Int) -> ())?
+    
     /// 滚动到某一位置的事件回调
     public var didScrollToIndex: ((Int) -> ())?
     

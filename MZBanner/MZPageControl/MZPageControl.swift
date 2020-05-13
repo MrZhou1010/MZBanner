@@ -8,55 +8,63 @@
 
 import UIKit
 
-enum MZPageControlAlignment {
+public enum MZPageControlAlignment {
     case left
     case center
     case right
 }
 
 class MZPageControl: UIControl {
+    
     /// page个数
     public var numberOfPages: Int = 0 {
         didSet {
             self.setupPages()
         }
     }
+    
     /// page间隔
     public var pageSpacing: CGFloat = 8.0 {
         didSet {
             self.updateFrame()
         }
     }
+    
     /// page大小
     public var pageSize: CGSize = CGSize(width: 8.0, height: 8.0) {
         didSet {
             self.updateFrame()
         }
     }
+    
     /// 当前page大小
     public var currentPageSize: CGSize? {
         didSet {
             self.updateFrame()
         }
     }
+    
     /// page位置
     public var alignment: MZPageControlAlignment = .center {
         didSet {
             self.updateFrame()
         }
     }
+    
     /// page圆角
     public var pageCornerRadius: CGFloat? {
         didSet {
             self.updateFrame()
         }
     }
+    
     /// 当前page圆角
     public var currentPageCornerRadius: CGFloat? {
         didSet {
             self.updateFrame()
         }
     }
+    
     /// 当前page
     public var currentPage: Int = 0 {
         didSet {
@@ -65,30 +73,35 @@ class MZPageControl: UIControl {
             self.updatePageNumber()
         }
     }
+    
     /// page颜色
     public var pageIndicatorTintColor: UIColor = UIColor.gray {
         didSet {
             self.changeColor()
         }
     }
+    
     /// 当前page颜色
     public var currentPageIndicatorTintColor: UIColor = UIColor.white {
         didSet {
             self.changeColor()
         }
     }
+    
     /// 以image作为page
     public var pageImage: UIImage? {
         didSet {
             self.changeColor()
         }
     }
+    
     /// 当前page的image
     public var currentPageImage: UIImage? {
         didSet {
             self.changeColor()
         }
     }
+    
     /// 是否显示page的序号
     public var showPageNumber: Bool = false {
         didSet {
@@ -97,30 +110,35 @@ class MZPageControl: UIControl {
             }
         }
     }
+    
     /// page的序号文字颜色
     public var pageNumberColor: UIColor = UIColor.lightGray {
         didSet {
             self.updatePageNumber()
         }
     }
+    
     /// page的序号文字字体
     public var pageNumberFont: UIFont = UIFont.systemFont(ofSize: 8.0) {
         didSet {
             self.updatePageNumber()
         }
     }
+    
     /// 当前page的序号文字颜色
     public var currentPageNumberColor: UIColor = UIColor.black {
         didSet {
             self.updatePageNumber()
         }
     }
+    
     /// 当前page的序号文字字体
     public var currentPageNumberFont: UIFont = UIFont.systemFont(ofSize: 8.0) {
         didSet {
             self.updatePageNumber()
         }
     }
+    
     /// 是否可以点击page,默认为true
     public var isClickEnable: Bool = true {
         didSet {
@@ -129,10 +147,13 @@ class MZPageControl: UIControl {
             }
         }
     }
+    
     /// 点击page的回调
     public var pageClickBlock: ((_ index: Int) -> ())?
+    
     /// page试图
     private var pages = [UIImageView]()
+    
     /// page序号
     private var pageNumbers = [UILabel]()
     
@@ -171,12 +192,12 @@ class MZPageControl: UIControl {
         case .right:
             pageX = self.frame.size.width - totalW - self.pageSpacing
         default:
-            pageX = (self.frame.size.width - totalW) / 2 + self.pageSpacing
+            pageX = (self.frame.size.width - totalW) / 2.0 + self.pageSpacing
         }
         let width = index == self.currentPage ? self.currentPageSize!.width : self.pageSize.width
         let height = index == self.currentPage ? self.currentPageSize!.height : self.pageSize.height
         let x = index <= self.currentPage ? pageX + pageW * CGFloat(index) : pageX + pageW * CGFloat(index - 1) + currentPageW
-        let y = (self.frame.size.height - height) / 2
+        let y = (self.frame.size.height - height) / 2.0
         return CGRect(x: x, y: y, width: width, height: height)
     }
     
@@ -184,7 +205,7 @@ class MZPageControl: UIControl {
         for (index, page) in self.pages.enumerated() {
             let frame = self.getFrame(index: index)
             page.frame = frame
-            var radius = self.pageCornerRadius == nil ? frame.size.height / 2 : self.pageCornerRadius!
+            var radius = self.pageCornerRadius == nil ? frame.size.height / 2.0 : self.pageCornerRadius!
             if index == self.currentPage {
                 if self.currentPageImage != nil {
                     radius = 0

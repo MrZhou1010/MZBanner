@@ -27,7 +27,6 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         self.view.addSubview(tableView)
-        
         let bannerView = MZBannerView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 150))
         bannerView.placeholderImage = UIImage(named: "placeholder")
         bannerView.setImageUrlsGroup(["http://t.cn/RYVfQep",
@@ -116,4 +115,3 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
         return 0.001
     }
 }
-
