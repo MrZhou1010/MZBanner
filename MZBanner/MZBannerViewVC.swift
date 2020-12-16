@@ -2,7 +2,7 @@
 //  MZBannerViewVC.swift
 //  MZBanner
 //
-//  Created by 木木 on 2019/11/27.
+//  Created by Mr.Z on 2019/11/27.
 //  Copyright © 2019 Mr.Z. All rights reserved.
 //
 
@@ -16,7 +16,7 @@ class MZBannerViewVC: UIViewController {
     public var type: Int = 0
     
     private lazy var bannerView: MZBannerView = {
-        let bannerView: MZBannerView = MZBannerView(frame: CGRect(x: 0, y: kStatusNavBarHeight, width: self.view.bounds.size.width, height: 160))
+        let bannerView: MZBannerView = MZBannerView(frame: CGRect(x: 0, y: kStatusNavBarHeight, width: self.view.bounds.size.width, height: 160.0))
         bannerView.placeholderImage = UIImage(named: "placeholder")
         return bannerView
     }()
@@ -30,8 +30,8 @@ class MZBannerViewVC: UIViewController {
             let localImages: [UIImage] = [UIImage(named: "baner_pic1")!, UIImage(named: "baner_pic2")!, UIImage(named: "baner_pic3")!, UIImage(named: "baner_pic4")!]
             self.bannerView.isAutomatic = false
             self.bannerView.setImagesGroup(localImages)
-            self.bannerView.itemSize = CGSize(width: self.view.bounds.size.width - 100, height: (self.view.bounds.size.width - 100) * 300 / 750)
-            self.bannerView.itemSpacing = 40
+            self.bannerView.itemSize = CGSize(width: self.view.bounds.size.width - 100.0, height: (self.view.bounds.size.width - 100.0) * 300.0 / 750.0)
+            self.bannerView.itemSpacing = 40.0
             self.bannerView.itemZoomScale = 1.2
             self.bannerView.itemBorderWidth = 1.0
             self.bannerView.itemBorderColor = UIColor.gray
@@ -56,12 +56,12 @@ class MZBannerViewVC: UIViewController {
                 return attriStr
             }
             self.bannerView.setImagesGroup(localImages, titlesGroup: titles, attributedTitlesGroup: attributedTitles)
-            self.bannerView.itemSize = CGSize(width: self.view.bounds.size.width - 50, height: (self.view.bounds.size.width - 50) * 300 / 750)
+            self.bannerView.itemSize = CGSize(width: self.view.bounds.size.width - 50.0, height: (self.view.bounds.size.width - 50.0) * 300.0 / 750.0)
             self.bannerView.timeInterval = 3
-            self.bannerView.itemSpacing = 10
+            self.bannerView.itemSpacing = 10.0
             self.bannerView.titleBackgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
             self.bannerView.titleNumberOfLines = 0
-            self.bannerView.titleViewHeight = 40
+            self.bannerView.titleViewHeight = 40.0
             self.bannerView.itemBorderWidth = 1.0
             self.bannerView.showPageControl = false
             self.bannerView.didSelectedItem = {
@@ -73,10 +73,10 @@ class MZBannerViewVC: UIViewController {
                                     "如有问题，欢迎issue或者联系邮箱",
                                     "欢迎star✨✨✨✨✨✨，谢谢支持!"]
             let titleImages: [UIImage] = [UIImage(named: "activity")!, UIImage(named: "activity")!, UIImage(named: "activity")!]
-            let sizeGroup = [CGSize(width: 30, height: 15), CGSize(width: 30, height: 15), CGSize(width: 30, height: 15)]
+            let sizeGroup = [CGSize(width: 30.0, height: 15.0), CGSize(width: 30.0, height: 15.0), CGSize(width: 30.0, height: 15.0)]
             self.bannerView.setTitlesGroup(titles, attributedTitlesGroup: nil)
             self.bannerView.setTitleImagesGroup(titleImages, sizeGroup: sizeGroup)
-            self.bannerView.frame = CGRect(x: 16, y: kStatusNavBarHeight, width: self.view.bounds.size.width - 32, height: 30.0)
+            self.bannerView.frame = CGRect(x: 16.0, y: kStatusNavBarHeight, width: self.view.bounds.size.width - 32.0, height: 30.0)
             self.bannerView.titleBackgroundColor = UIColor.lightGray
             self.bannerView.titleColor = UIColor.red
             self.bannerView.scrollDirection = .vertical
@@ -107,13 +107,13 @@ class MZBannerViewVC: UIViewController {
             self.bannerView.placeholderImage = UIImage(named: "placeholder")
             self.bannerView.timeInterval = 3
             self.bannerView.setImageUrlsGroup(imageUrls, titlesGroup: nil, attributedTitlesGroup: nil)
-            self.bannerView.pageControlSize = CGSize(width: 16, height: 4)
-            self.bannerView.pageControlCurrentSize = CGSize(width: 16, height: 6)
+            self.bannerView.pageControlSize = CGSize(width: 16.0, height: 4.0)
+            self.bannerView.pageControlCurrentSize = CGSize(width: 16.0, height: 6.0)
             self.bannerView.pageControlIndictorColor = UIColor.red
             self.bannerView.pageControlCurrentIndictorColor = UIColor.blue
-            self.bannerView.itemSize = CGSize(width: 240, height: 90)
+            self.bannerView.itemSize = CGSize(width: 240.0, height: 90.0)
             self.bannerView.itemZoomScale = 1.2
-            self.bannerView.itemSpacing = 20
+            self.bannerView.itemSpacing = 20.0
             self.bannerView.didSelectedItem = {
                 print("点击第\($0)个item")
             }

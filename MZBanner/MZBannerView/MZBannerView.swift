@@ -259,14 +259,21 @@ class MZBannerView: UIView {
     private var itemsCount: Int = 0
     /// 实际数据的个数
     private var realDataCount: Int = 0
+    /// 轮播类型(本地图片、网络图片、文本)
     private var resourceType: MZBannerResourceType = .image
+    /// 定时器
     private var timer: Timer?
-    
+    /// 本地图片数组
     private var imagesGroup = [UIImage]()
+    /// 网络图片地址数组
     private var imageUrlsGroup = [String]()
+    /// 文本数组
     private var titlesGroup = [NSAttributedString]()
+    /// 描述本地图标数组
     private var titleImagesGroup = [UIImage]()
+    /// 描述网络图标地址数组
     private var titleImageUrlsGroup = [String]()
+    /// 描述图标大小数组
     private var titleImageSizeGroup = [CGSize]()
     
     // MARK: - 初始化和UI
@@ -309,7 +316,6 @@ class MZBannerView: UIView {
 // MARK: - 设置数据
 extension MZBannerView {
     /// 设置本地轮播图片
-    ///
     /// - Parameters:
     ///   - imagesGroup: 轮播图片数组
     ///   - titlesGroup: 描述文字数组
@@ -325,7 +331,6 @@ extension MZBannerView {
     }
     
     /// 设置网络轮播图片
-    ///
     /// - Parameters:
     ///   - urlsGroup: 轮播图片地址数组
     ///   - titlesGroup: 描述文字数组
@@ -341,7 +346,6 @@ extension MZBannerView {
     }
     
     /// 设置轮播文字
-    ///
     /// - Parameters:
     ///   - titlesGroup: 轮播文字数组
     ///   - attributedTitlesGroup: 轮播文字数组
@@ -365,7 +369,6 @@ extension MZBannerView {
     }
     
     /// 设置本地描述图标
-    ///
     /// - Parameters:
     ///   - titleImagesGroup: 描述图标数组
     ///   - sizeGroup: 描述图标尺寸数组
@@ -379,7 +382,6 @@ extension MZBannerView {
     }
     
     /// 设置网络描述图标
-    ///
     /// - Parameters:
     ///   - titleImageUrlsGroup: 描述图标数组
     ///   - sizeGroup: 描述图标尺寸数组

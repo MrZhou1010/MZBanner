@@ -10,9 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var data: [String] = ["MZPageControl", "MZBannerView"]
-    var pageControlData = ["默认", "颜色","位置", "大小", "圆角", "图片"]
-    var bannerViewData = ["本地图片", "本地图片+描述文本", "文本", "网络图片", "网络图片+描述文本"]
+    private var data: [String] = ["MZPageControl", "MZBannerView"]
+    private var pageControlData = ["默认", "颜色","位置", "大小", "圆角", "图片"]
+    private var bannerViewData = ["本地图片", "本地图片+描述文本", "文本", "网络图片", "网络图片+描述文本"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

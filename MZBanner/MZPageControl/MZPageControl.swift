@@ -70,7 +70,7 @@ class MZPageControl: UIControl {
         didSet {
             self.changeColor()
             self.updateFrame()
-            self.updatePageNumber()
+            self.updatePageNumbers()
         }
     }
     
@@ -114,28 +114,28 @@ class MZPageControl: UIControl {
     /// page的序号文字颜色
     public var pageNumberColor: UIColor = UIColor.lightGray {
         didSet {
-            self.updatePageNumber()
+            self.updatePageNumbers()
         }
     }
     
     /// page的序号文字字体
     public var pageNumberFont: UIFont = UIFont.systemFont(ofSize: 8.0) {
         didSet {
-            self.updatePageNumber()
+            self.updatePageNumbers()
         }
     }
     
     /// 当前page的序号文字颜色
     public var currentPageNumberColor: UIColor = UIColor.black {
         didSet {
-            self.updatePageNumber()
+            self.updatePageNumbers()
         }
     }
     
     /// 当前page的序号文字字体
     public var currentPageNumberFont: UIFont = UIFont.systemFont(ofSize: 8.0) {
         didSet {
-            self.updatePageNumber()
+            self.updatePageNumbers()
         }
     }
     
@@ -201,6 +201,7 @@ class MZPageControl: UIControl {
         return CGRect(x: x, y: y, width: width, height: height)
     }
     
+    /// 更新布局
     public func updateFrame() {
         for (index, page) in self.pages.enumerated() {
             let frame = self.getFrame(index: index)
@@ -221,6 +222,7 @@ class MZPageControl: UIControl {
         }
     }
     
+    /// 更新颜色
     private func changeColor() {
         for (index, page) in self.pages.enumerated() {
             if index == self.currentPage {
@@ -239,6 +241,7 @@ class MZPageControl: UIControl {
         }
     }
     
+    /// 设置序号数字
     private func setupPageNumbers() {
         for (index, page) in self.pages.enumerated() {
             let numberLbl = UILabel(frame: page.bounds)
@@ -251,7 +254,8 @@ class MZPageControl: UIControl {
         }
     }
     
-    private func updatePageNumber() {
+    /// 更新序号数字
+    private func updatePageNumbers() {
         for (index, pageNumber) in self.pageNumbers.enumerated() {
             pageNumber.frame = CGRect(x: 0, y: 0, width: self.getFrame(index: index).width, height: self.getFrame(index: index).height)
             pageNumber.textColor = index == self.currentPage ? self.currentPageNumberColor : self.pageNumberColor
