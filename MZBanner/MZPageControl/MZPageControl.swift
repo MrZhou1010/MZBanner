@@ -16,6 +16,7 @@ public enum MZPageControlAlignment {
 
 class MZPageControl: UIControl {
     
+    // MARK: - 属性
     /// page个数
     public var numberOfPages: Int = 0 {
         didSet {
@@ -68,9 +69,22 @@ class MZPageControl: UIControl {
     /// 当前page
     public var currentPage: Int = 0 {
         didSet {
-            self.changeColor()
-            self.updateFrame()
-            self.updatePageNumbers()
+            if self.isAnimationEnable {
+                self.changeColor()
+                self.updateFrame()
+                if self.currentPage == oldValue || self.isAnimating {
+                    return
+                }
+                if self.currentPage > oldValue {
+                    self.startAnimationToRight(oldPage: oldValue, newPage: self.currentPage)
+                } else {
+                    self.startAnimationToLeft(oldPage: oldValue, newPage: self.currentPage)
+                }
+            } else {
+                self.changeColor()
+                self.updateFrame()
+                self.updatePageNumbers()
+            }
         }
     }
     
@@ -103,11 +117,9 @@ class MZPageControl: UIControl {
     }
     
     /// 是否显示page的序号
-    public var showPageNumber: Bool = false {
+    public var isShowPageNumber: Bool = false {
         didSet {
-            if showPageNumber {
-                self.setupPageNumbers()
-            }
+            self.setupPageNumbers()
         }
     }
     
@@ -139,6 +151,41 @@ class MZPageControl: UIControl {
         }
     }
     
+    /// 是否显示page的边框
+    public var isShowPageBorder: Bool = false {
+        didSet {
+            self.updatePageBorder()
+        }
+    }
+    
+    /// page的边框宽度
+    public var pageBorderWidth: CGFloat = 1.0 {
+        didSet {
+            self.updatePageBorder()
+        }
+    }
+    
+    /// page的边框颜色
+    public var pageBorderColor: UIColor = UIColor.white {
+        didSet {
+            self.updatePageBorder()
+        }
+    }
+    
+    /// 当前page的边框宽度
+    public var currentPageBorderWidth: CGFloat = 1.0 {
+        didSet {
+            self.updatePageBorder()
+        }
+    }
+    
+    /// 当前page的边框颜色
+    public var currentPageBorderColor: UIColor = UIColor.gray {
+        didSet {
+            self.updatePageBorder()
+        }
+    }
+    
     /// 是否可以点击page,默认为true
     public var isClickEnable: Bool = true {
         didSet {
@@ -147,6 +194,9 @@ class MZPageControl: UIControl {
             }
         }
     }
+    
+    /// 是否动画,默认为false
+    public var isAnimationEnable: Bool = false
     
     /// 点击page的回调
     public var pageClickBlock: ((_ index: Int) -> ())?
@@ -157,6 +207,10 @@ class MZPageControl: UIControl {
     /// page序号
     private var pageNumbers = [UILabel]()
     
+    /// 是否在动画中
+    private var isAnimating = false
+    
+    // MARK: - 方法
     private func setupPages() {
         if self.pages.count > 0 {
             for page in self.pages {
@@ -243,6 +297,9 @@ class MZPageControl: UIControl {
     
     /// 设置序号数字
     private func setupPageNumbers() {
+        if !self.isShowPageNumber {
+            return
+        }
         for (index, page) in self.pages.enumerated() {
             let numberLbl = UILabel(frame: page.bounds)
             numberLbl.text = "\(index + 1)"
@@ -263,6 +320,17 @@ class MZPageControl: UIControl {
         }
     }
     
+    /// 更新边框
+    private func updatePageBorder() {
+        if !self.isShowPageBorder {
+            return
+        }
+        for (index, page) in self.pages.enumerated() {
+            page.layer.borderColor = index == self.currentPage ? self.currentPageBorderColor.cgColor : self.pageBorderColor.cgColor
+            page.layer.borderWidth = index == self.currentPage ? self.currentPageBorderWidth : self.pageBorderWidth
+        }
+    }
+    
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let hitView = super.hitTest(point, with: event)
         return hitView == self ? nil : hitView
@@ -273,6 +341,70 @@ class MZPageControl: UIControl {
         self.currentPage = index
         if self.pageClickBlock != nil {
             self.pageClickBlock!(index)
+        }
+    }
+    
+    // MARK: - 动画
+    /// 向右动画
+    private func startAnimationToRight(oldPage: Int, newPage: Int) {
+        guard let currentPageSize = self.currentPageSize else {
+            return
+        }
+        let startView = self.pages[oldPage]
+        self.bringSubviewToFront(startView)
+        self.isAnimating = true
+        UIView.animate(withDuration: 0.3) {
+            // 当前选中的圆点,x不变,宽度增加,增加几个圆点和间隙距离
+            let width = currentPageSize.width + (self.pageSize.width + self.pageSpacing) * CGFloat(newPage - oldPage)
+            startView.frame = CGRect(x: startView.frame.minX, y: startView.frame.minY, width: width, height: startView.frame.height)
+        } completion: { (finished) in
+            let endView = self.pages[newPage]
+            endView.backgroundColor = startView.backgroundColor
+            endView.frame = startView.frame
+            startView.backgroundColor = self.pageIndicatorTintColor
+            for i in 0 ..< (newPage - oldPage) {
+                let tempView = self.pages[oldPage + i]
+                tempView.frame = CGRect(x: startView.frame.minX + (self.pageSize.width + self.pageSpacing) * CGFloat(i), y: tempView.frame.minY, width: self.pageSize.width, height: self.pageSize.height)
+            }
+            UIView.animate(withDuration: 0.3) {
+                let y = (self.frame.size.height - currentPageSize.height) / 2.0
+                endView.frame = CGRect(x: endView.frame.maxX - currentPageSize.width, y: y, width: currentPageSize.width, height: currentPageSize.height)
+            } completion: { (finished) in
+                endView.backgroundColor = self.currentPageIndicatorTintColor
+                self.isAnimating = false
+            }
+        }
+    }
+    
+    /// 向左动画
+    private func startAnimationToLeft(oldPage: Int, newPage: Int) {
+        guard let currentPageSize = self.currentPageSize else {
+            return
+        }
+        let startView = self.pages[oldPage]
+        self.bringSubviewToFront(startView)
+        self.isAnimating = true
+        UIView.animate(withDuration: 0.3) {
+            // 当前选中的圆点,x向左移动,宽度增加,增加几个圆点和间隙距离
+            let x = startView.frame.minX - (self.pageSize.width + self.pageSpacing) * CGFloat(oldPage - newPage)
+            let width = currentPageSize.width + (self.pageSize.width + self.pageSpacing) * CGFloat(oldPage - newPage)
+            startView.frame = CGRect(x: x, y: startView.frame.minY, width: width, height: startView.frame.height)
+        } completion: { (finished) in
+            let endView = self.pages[newPage]
+            endView.backgroundColor = startView.backgroundColor
+            endView.frame = startView.frame
+            startView.backgroundColor = self.pageIndicatorTintColor
+            for i in 0 ..< (oldPage - newPage) {
+                let tempView = self.pages[oldPage - i]
+                tempView.frame = CGRect(x: startView.frame.maxX - self.pageSize.width - (self.pageSize.width + self.pageSpacing) * CGFloat(i), y: tempView.frame.minY, width: self.pageSize.width, height: self.pageSize.height)
+            }
+            UIView.animate(withDuration: 0.3) {
+                let y = (self.frame.size.height - currentPageSize.height) / 2.0
+                endView.frame = CGRect(x: endView.frame.minX, y: y, width: currentPageSize.width, height: currentPageSize.height)
+            } completion: { (finished) in
+                endView.backgroundColor = self.currentPageIndicatorTintColor
+                self.isAnimating = false
+            }
         }
     }
 }

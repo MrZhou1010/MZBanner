@@ -34,18 +34,18 @@ class MZBannerViewCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupImageView() {
-        self.imageView = UIImageView(frame: self.contentView.bounds)
+        self.imageView = UIImageView.init(frame: self.contentView.bounds)
         self.imageView.clipsToBounds = true
         self.contentView.addSubview(self.imageView)
     }
     
     private func setupTitleLabel() {
-        self.titleContainerView = UIView(frame: CGRect(x: 0, y: self.contentView.bounds.size.height - self.titleContainerViewH, width: self.contentView.bounds.size.width, height: self.titleContainerViewH))
+        self.titleContainerView = UIView.init(frame: CGRect(x: 0, y: self.contentView.bounds.size.height - self.titleContainerViewH, width: self.contentView.bounds.size.width, height: self.titleContainerViewH))
         self.titleContainerView.isHidden = true
         self.contentView.addSubview(self.titleContainerView)
-        self.titleImageView = UIImageView()
+        self.titleImageView = UIImageView.init()
         self.titleContainerView.addSubview(self.titleImageView)
-        self.titleLabel = UILabel()
+        self.titleLabel = UILabel.init()
         self.titleLabel.clipsToBounds = true
         self.titleContainerView.addSubview(self.titleLabel)
     }

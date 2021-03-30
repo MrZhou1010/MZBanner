@@ -132,6 +132,13 @@ class MZBannerView: UIView {
         }
     }
     
+    /// 是否可以点击pageControl的page,默认为true
+    public var pageControlIsAnimationEnable: Bool = false {
+        didSet {
+            self.pageControl.isAnimationEnable = self.pageControlIsAnimationEnable
+        }
+    }
+    
     /// pageControl的高度,默认为25.0
     public var pageControlHeight: CGFloat = 25.0 {
         didSet {
@@ -211,10 +218,10 @@ class MZBannerView: UIView {
     }
     
     /// 选中item的事件回调
-    public var didSelectedItem: ((Int) -> ())?
+    public var didSelectedItem: ((_ index: Int) -> ())?
     
     /// 滚动到某一位置的事件回调
-    public var didScrollToIndex: ((Int) -> ())?
+    public var didScrollToIndex: ((_ index: Int) -> ())?
     
     // MARK: - Lazy
     private lazy var placeholderImageView: UIImageView = {
@@ -248,7 +255,10 @@ class MZBannerView: UIView {
     
     private lazy var pageControl: MZPageControl = {
         let pageControl = MZPageControl(frame: CGRect(x: 0, y: self.bounds.height - self.pageControlHeight, width: self.bounds.width, height: self.pageControlHeight))
-        pageControl.pageClickBlock = { (index) in
+        pageControl.pageClickBlock = { [weak self] (index) in
+            guard let `self` = self else {
+                return
+            }
             let targetIndex = self.isInfinite ? self.itemsCount / 2 + index : index
             self.scrollToItem(at: IndexPath(item: targetIndex, section: 0))
         }
@@ -413,8 +423,8 @@ extension MZBannerView {
         if self.resourceType == .text  {
             self.showPageControl = false
         }
-        if isAutomatic {
-            startTimer()
+        if self.isAutomatic {
+            self.startTimer()
         }
     }
 }
@@ -460,7 +470,7 @@ extension MZBannerView: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let centerViewPoint = convert(collectionView.center, to: collectionView)
+        let centerViewPoint = self.convert(collectionView.center, to: collectionView)
         if let centerIndex = collectionView.indexPathForItem(at: centerViewPoint) {
             if indexPath.item == centerIndex.item {
                 let index = indexPath.item % self.realDataCount

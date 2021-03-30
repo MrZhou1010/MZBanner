@@ -2,117 +2,80 @@
 
 自动轮播图（图片+文字+自定义PageControl）
 
-效果图：
+效果图:
 
 ![image](https://github.com/MrZhou1010/MZBanner/blob/master/demoImage/demo1.png)![image](https://github.com/MrZhou1010/MZBanner/blob/master/demoImage/demo2.png)![image](https://github.com/MrZhou1010/MZBanner/blob/master/demoImage/demo3.png)![image](https://github.com/MrZhou1010/MZBanner/blob/master/demoImage/demo4.png)![image](https://github.com/MrZhou1010/MZBanner/blob/master/demoImage/demo5.png)![image](https://github.com/MrZhou1010/MZBanner/blob/master/demoImage/demo6.png)
 
-实现：
+实现:
 
-    private lazy var bannerView: MZBannerView = {
-        let bannerView: MZBannerView = MZBannerView(frame: CGRect(x: 0.0, y: kStatusNavBarHeight, width: self.view.bounds.size.width, height: 160.0))
-        bannerView.placeholderImage = UIImage(named: "placeholder")
-        return bannerView
-    }()
-    switch self.type {
-        case 0:
-            let localImages: [UIImage] = [UIImage(named: "baner_pic1")!, UIImage(named: "baner_pic2")!, UIImage(named: "baner_pic3")!, UIImage(named: "baner_pic4")!]
-            self.bannerView.isAutomatic = false
-            self.bannerView.setImagesGroup(localImages)
-            self.bannerView.itemSize = CGSize(width: self.view.bounds.size.width - 100, height: (self.view.bounds.size.width - 100) * 300 / 750)
-            self.bannerView.itemSpacing = 40
-            self.bannerView.itemZoomScale = 1.2
-            
-            self.bannerView.itemBorderWidth = 1.0
-            self.bannerView.itemBorderColor = UIColor.gray
-            self.bannerView.itemCornerRadius = 10.0
-            
-            self.bannerView.didSelectedItem = {
-                print("点击第\($0)个item")
-            }
-        case 1:
-            let localImages: [UIImage] = [UIImage(named: "baner_local_1")!, UIImage(named: "baner_local_2")!, UIImage(named: "baner_local_3")!, UIImage(named: "baner_local_4")!, UIImage(named: "baner_local_5")!]
-            let titles: [String] = ["正在直播·2017维密直播大秀\n天使惊艳合体性感开撩",
-                                    "猎场-会员抢先看\n胡歌陈龙联手戳穿袁总阴谋",
-                                    "我的！体育老师\n好样的！前妻献媚讨好 张嘉译一口回绝",
-                                    "小宝带你模拟断案！\n开局平民，晋升全靠运筹帷幄",
-                                    "【挑战极限·精华版】孙红雷咆哮洗车被冻傻"]
-            let attributedTitles = titles.map { (str) -> NSAttributedString in
-                let arr = str.components(separatedBy: "\n")
-                let attriStr = NSMutableAttributedString(string:str as String)
-                attriStr.addAttributes([.foregroundColor: UIColor.green, .font: UIFont.systemFont(ofSize: 13)], range: NSMakeRange(0, arr[0].count))
-                if arr.count > 1 {
-                    attriStr.addAttributes([.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 11)], range: NSMakeRange(arr[0].count + 1, arr[1].count))
-                }
-                return attriStr
-            }
-            self.bannerView.setImagesGroup(localImages, titlesGroup: titles, attributedTitlesGroup: attributedTitles)
-            self.bannerView.itemSize = CGSize(width: self.view.bounds.size.width - 50, height: (self.view.bounds.size.width - 50) * 300 / 750)
-            self.bannerView.timeInterval = 3
-            self.bannerView.itemSpacing = 10
-            
-            self.bannerView.titleBackgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
-            self.bannerView.titleNumberOfLines = 0
-            self.bannerView.titleViewHeight = 40
-            self.bannerView.itemBorderWidth = 1.0
-            
-            self.bannerView.showPageControl = false
-            
-            self.bannerView.didSelectedItem = {
-                print("点击第\($0)个item")
-            }
-        case 2:
-            let titles: [String] = ["更多title/item/pageControl使用方式，请参考API",
-                                    "GitHub: https://github.com",
-                                    "如有问题，欢迎issue或者联系邮箱",
-                                    "欢迎star✨✨✨✨✨✨，谢谢支持!"]
-            let titleImages = [#imageLiteral(resourceName: "activity"),#imageLiteral(resourceName: "activity"),#imageLiteral(resourceName: "activity")]
-            let sizeGroup = [CGSize(width: 30, height: 15), CGSize(width: 30, height: 15), CGSize(width: 30, height: 15)]
-            self.bannerView.setTitlesGroup(titles, attributedTitlesGroup: nil)
-            self.bannerView.setTitleImagesGroup(titleImages, sizeGroup: sizeGroup)
-            self.bannerView.frame = CGRect(x: 16, y: kStatusNavBarHeight, width: self.view.bounds.size.width - 32, height: 30.0)
-            self.bannerView.titleBackgroundColor = UIColor.lightGray
-            self.bannerView.titleColor = UIColor.red
-            self.bannerView.scrollDirection = .vertical
-            self.bannerView.layer.cornerRadius = 5.0
-            self.bannerView.layer.masksToBounds = true
-            self.bannerView.didSelectedItem = {
-                print("点击第\($0)个item")
-            }
-        case 3:
-            let imageUrls: [String] = ["http://chatm-icon.oss-cn-beijing.aliyuncs.com/pic/pic_20171101181927887.jpg",
-                                       "http://chatm-icon.oss-cn-beijing.aliyuncs.com/pic/pic_20171114171645011.jpg",
-                                       "http://chatm-icon.oss-cn-beijing.aliyuncs.com/pic/pic_20171114172009707.png"]
-            self.bannerView.placeholderImage = UIImage(named: "placeholder")
-            self.bannerView.isInfinite = false
-            self.bannerView.setImageUrlsGroup(imageUrls, titlesGroup: nil, attributedTitlesGroup: nil)
-            self.bannerView.pageControlIndictorColor = UIColor.green
-            self.bannerView.pageControlCurrentIndictorColor = UIColor.red
-            self.bannerView.scrollDirection = .vertical
-            
-            self.bannerView.didSelectedItem = {
-                print("点击第\($0)个item")
-            }
-        case 4:
-            let imageUrls: [String] = ["http://t.cn/RYMuvvn",
-                                       "http://t.cn/RYVfnEO",
-                                       "http://t.cn/RYVf1fd",
-                                       "http://t.cn/RYVfgeI",
-                                       "http://t.cn/RYVfsLo"]
-            self.bannerView.placeholderImage = UIImage(named: "placeholder")
-            self.bannerView.timeInterval = 3
-            self.bannerView.setImageUrlsGroup(imageUrls, titlesGroup: nil, attributedTitlesGroup: nil)
-            self.bannerView.pageControlSize = CGSize(width: 16, height: 4)
-            self.bannerView.pageControlCurrentSize = CGSize(width: 16, height: 6)
-            self.bannerView.pageControlIndictorColor = UIColor.red
-            self.bannerView.pageControlCurrentIndictorColor = UIColor.blue
-            
-            self.bannerView.itemSize = CGSize(width: 240, height: 90)
-            self.bannerView.itemZoomScale = 1.2
-            self.bannerView.itemSpacing = 20
-            
-            self.bannerView.didSelectedItem = {
-                print("点击第\($0)个item")
-            }
-        default:
-            break
-        }
+一.自定义PageControl
+
+    属性:
+    1.page个数 numberOfPages
+    2.page间隔 pageSpacing
+    3.page大小 pageSize
+    4.当前page大小 currentPageSize
+    5.page位置 alignment
+    6.page圆角 pageCornerRadius
+    6.当前page圆角 currentPageCornerRadius
+    7.当前page currentPage
+    8.page颜色 pageIndicatorTintColor
+    9.当前page颜色 currentPageIndicatorTintColor
+    10.以image作为page pageImage
+    11.当前page的image currentPageImage
+    12.是否显示page的序号 isShowPageNumber
+    13.page的序号文字颜色 pageNumberColor
+    14.page的序号文字字体 pageNumberFont
+    15.当前page的序号文字颜色 currentPageNumberColor
+    16.当前page的序号文字字体 currentPageNumberFont
+    17.是否显示page的边框 isShowPageBorder
+    18.page的边框宽度 pageBorderWidth
+    19.page的边框颜色 pageBorderColor
+    20.当前page的边框宽度 currentPageBorderWidth
+    21.当前page的边框颜色 currentPageBorderColor
+    22.是否可以点击page isClickEnable
+    23.是否动画 isAnimationEnable
+    注：动画不支持以image作为page的样式
+
+二.自动轮播图Banner
+
+    属性:
+    1.自动轮播 isAutomatic
+    2.无穷值 isInfinite
+    3.轮播时间间隔 timeInterval
+    4.轮播方向 scrollDirection
+    5.占位图 placeholderImage
+    6.item的大小 itemSize
+    7.中间item的放大比例 itemZoomScale
+    8.item的间距 itemSpacing
+    9.item的圆角 itemCornerRadius
+    10.item的边框 itemBorderWidth
+    11.item的边框颜色 itemBorderColor
+    12.图片的填充模式 imageContentMode
+    13.文本高度 titleViewHeight
+    14.文本颜色 titleColor
+    15.文本字体 titleFont
+    16.文本对齐方式 titleAlignment
+    17.文本背景颜色 titleBackgroundColor
+    18.文本默认为单行显示 titleNumberOfLines
+    19.文本的breakMode titleLineBreakMode
+    20.是否显示pageControl showPageControl
+    .
+    .
+    .
+    
+    回调事件:
+    1.选中item的事件回调 didSelectedItem
+    2.滚动到某一位置的事件回调 didScrollToIndex
+    
+    方法:
+    1.设置本地轮播图片
+    setImagesGroup(_ imagesGroup: [UIImage]?, titlesGroup: [String]? = nil, attributedTitlesGroup: [NSAttributedString]? = nil)
+    2.设置网络轮播图片
+    setImageUrlsGroup(_ urlsGroup: [String]?, titlesGroup: [String]? = nil, attributedTitlesGroup: [NSAttributedString]? = nil)
+    3.设置轮播文字
+    setTitlesGroup(_ titlesGroup: [String]?, attributedTitlesGroup: [NSAttributedString]? = nil)
+    4.设置本地描述图标
+    setTitleImagesGroup(_ titleImagesGroup: [UIImage]?, sizeGroup: [CGSize]?)
+    5.设置网络描述图标
+    setTitleImageUrlsGroup(_ titleImageUrlsGroup: [String]?, sizeGroup:[CGSize]?)
