@@ -56,8 +56,8 @@ class MZBannerView: UIView {
                 return
             }
             if let itemSize = self.itemSize {
-                let width = min(bounds.size.width, itemSize.width)
-                let height = min(bounds.size.height, itemSize.height)
+                let width = min(self.bounds.size.width, itemSize.width)
+                let height = min(self.bounds.size.height, itemSize.height)
                 self.flowLayout.itemSize = CGSize(width: width, height: height)
             }
         }
@@ -245,9 +245,9 @@ class MZBannerView: UIView {
         collectionView.bounces = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.scrollsToTop = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.scrollsToTop = false
         collectionView.decelerationRate = UIScrollView.DecelerationRate(rawValue: 0.0)
         collectionView.register(MZBannerViewCollectionViewCell.self, forCellWithReuseIdentifier: "bannerViewCellId")
         return collectionView

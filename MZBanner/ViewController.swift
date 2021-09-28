@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate,UITableViewDataSource {
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.data.count
     }

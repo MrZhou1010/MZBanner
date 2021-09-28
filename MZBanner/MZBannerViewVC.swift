@@ -8,9 +8,9 @@
 
 import UIKit
 
-let isIphoneX: Bool = (UIApplication.shared.statusBarFrame.height == 44.0) ? true : false
+let kStatusBarHeight = UIApplication.shared.statusBarFrame.height
 
-let kStatusNavBarHeight: CGFloat = isIphoneX ? 88.0 : 64.0
+let kStatusNavBarHeight: CGFloat = (kStatusBarHeight + 44.0)
 
 class MZBannerViewVC: UIViewController {
     
@@ -27,10 +27,10 @@ class MZBannerViewVC: UIViewController {
         self.view.addSubview(self.bannerView)
         switch self.type {
         case 0:
-            let localImages: [UIImage] = [UIImage(named: "icon_baner_pic_1")!,
-                                          UIImage(named: "icon_baner_pic_2")!,
-                                          UIImage(named: "icon_baner_pic_3")!,
-                                          UIImage(named: "icon_baner_pic_4")!]
+            let localImages: [UIImage] = [UIImage(named: "icon_banner_pic_1")!,
+                                          UIImage(named: "icon_banner_pic_2")!,
+                                          UIImage(named: "icon_banner_pic_3")!,
+                                          UIImage(named: "icon_banner_pic_4")!]
             self.bannerView.isAutomatic = false
             self.bannerView.setImagesGroup(localImages)
             self.bannerView.itemSize = CGSize(width: self.view.bounds.size.width - 100.0, height: (self.view.bounds.size.width - 100.0) * 300.0 / 750.0)
@@ -44,11 +44,11 @@ class MZBannerViewVC: UIViewController {
                 print("点击第\($0)个item")
             }
         case 1:
-            let localImages: [UIImage] = [UIImage(named: "icon_baner_local_1")!,
-                                          UIImage(named: "icon_baner_local_2")!,
-                                          UIImage(named: "icon_baner_local_3")!,
-                                          UIImage(named: "icon_baner_local_4")!,
-                                          UIImage(named: "icon_baner_local_5")!]
+            let localImages: [UIImage] = [UIImage(named: "icon_banner_local_1")!,
+                                          UIImage(named: "icon_banner_local_2")!,
+                                          UIImage(named: "icon_banner_local_3")!,
+                                          UIImage(named: "icon_banner_local_4")!,
+                                          UIImage(named: "icon_banner_local_5")!]
             let titles: [String] = ["正在直播·2017维密直播大秀\n天使惊艳合体性感开撩",
                                     "猎场-会员抢先看\n胡歌陈龙联手戳穿袁总阴谋",
                                     "我的！体育老师\n好样的！前妻献媚讨好 张嘉译一口回绝",

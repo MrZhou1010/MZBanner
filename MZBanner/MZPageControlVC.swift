@@ -62,8 +62,8 @@ class MZPageControlVC: UIViewController {
             bannerView.pageControlHeight = 30.0
             bannerView.pageControlSize = CGSize(width: 20.0, height: 20.0)
             bannerView.pageControlCurrentSize = CGSize(width: 25.0, height: 25.0)
-            bannerView.pageControlIndictorImage = UIImage(named: "icon_page")
-            bannerView.pageControlCurrentIndictorImage = UIImage(named: "icon_currentPage")
+            bannerView.pageControlIndictorImage = UIImage(named: "icon_page_normal")
+            bannerView.pageControlCurrentIndictorImage = UIImage(named: "icon_page_selected")
         case 6:
             bannerView.pageControlIndictorColor = UIColor.green
             bannerView.pageControlCurrentIndictorColor = UIColor.blue

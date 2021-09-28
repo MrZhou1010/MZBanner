@@ -14,18 +14,18 @@
 		2113BA9DC2043F97906DC470F8D8C601 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EDE8A9B6737E09A3806754AA7C539E /* String+MD5.swift */; };
 		27229A7A1286323E99B7A4FD12CD3D56 /* CacheSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00E49409DD262C16C4B013CCD47C6AC /* CacheSerializer.swift */; };
 		2C9E5D110BA025DA9E9F59D5AC00E164 /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6A9F31B05E7D67ED437AC30476726 /* Placeholder.swift */; };
-		2F421B6B8DEBB63C7CACDC5E101884F5 /* Pods-MZBanner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 699F8EA893D0B05DA66A6E3B77B67DD2 /* Pods-MZBanner-dummy.m */; };
 		36CB8F5ACE8E731E3A7203C7612E9C21 /* RequestModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC49EC5D5A606030656D654896EFC8B /* RequestModifier.swift */; };
 		520A343B9784B44D32602D555407E4FD /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994A5CE6D2BB049C40DDCFB750F826D6 /* Image.swift */; };
 		620BB858B2C1FEFA08AD056EBC72D292 /* ImageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E9330AD273AA9DD9A88C213AEED26 /* ImageTransition.swift */; };
+		6ADEF5EEEC05078BEF7FC62066780C87 /* Pods-MZBanner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F7674E4B60D63476A6A9EECCE72A7CA1 /* Pods-MZBanner-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		6C8C7726ADC17056DAC22D1795BC41D9 /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8A9E7CA9BD66C07BABD97C26C91765 /* ImageModifier.swift */; };
+		7222723F12D4F8D7970CBDC166ADB31B /* Pods-MZBanner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 699F8EA893D0B05DA66A6E3B77B67DD2 /* Pods-MZBanner-dummy.m */; };
 		78760275D05EA7779F813AD4E057B16D /* UIButton+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C026A632FA8C03A8D9E1745DED99D5 /* UIButton+Kingfisher.swift */; };
 		7CD24082A876F689219FC424693867F2 /* ImagePrefetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB1065B322F046B1DD9FC65F6C40732 /* ImagePrefetcher.swift */; };
 		895923E36F116E76619F966E2D2B6DD6 /* ThreadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D23AECF07EABB7A47FA0778D166469 /* ThreadHelper.swift */; };
 		93C47A5CB04751E2DC39D42F7D41EFFA /* ImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1A6802301A708C1021D3C9445CBB9 /* ImageView+Kingfisher.swift */; };
 		969A6798F95A4DA4398A4DA51A22F5F4 /* Kingfisher-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DB6DA503AE91A70E6710AAC1D022330E /* Kingfisher-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9AB124032EA3763E3210398C2E5D6FCE /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68B38DA66F79DB550BA4001F8FA4989 /* Box.swift */; };
-		A0A4DB685AF592FD33E00D63FDD19EBD /* Pods-MZBanner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F7674E4B60D63476A6A9EECCE72A7CA1 /* Pods-MZBanner-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A198976BC4DCDCE6F033C156C194AAF3 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FD7B7CF595D28B1CB0AD0DE26B2FE /* ImageProcessor.swift */; };
 		AEDAB52608A6B600AD57DE497D4CCCA3 /* Kingfisher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2592848D5332454093907157D690F0 /* Kingfisher-dummy.m */; };
 		BE8AB0B8E3A5DD57052EDC5AC9AE25B0 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254FA7730CB1CAB0BDA36D69A7D5C344 /* Resource.swift */; };
@@ -38,7 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3EBBAF8B4A372B1EC219AEA264A3FF02 /* PBXContainerItemProxy */ = {
+		D92A998733A6B568461AE35F2D5D8EB7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -64,9 +64,9 @@
 		6D8A9E7CA9BD66C07BABD97C26C91765 /* ImageModifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageModifier.swift; path = Sources/ImageModifier.swift; sourceTree = "<group>"; };
 		77A0F96480AD3945A37B25C8227D4C31 /* Pods-MZBanner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MZBanner.modulemap"; sourceTree = "<group>"; };
 		92E52751C1B884FAA62E6A08D0B243CE /* Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Kingfisher.swift; path = Sources/Kingfisher.swift; sourceTree = "<group>"; };
-		983DF1FC97C81C812780019826DEB314 /* libPods-MZBanner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-MZBanner.a"; path = "libPods-MZBanner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		983DF1FC97C81C812780019826DEB314 /* libPods-MZBanner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MZBanner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		994A5CE6D2BB049C40DDCFB750F826D6 /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Sources/Image.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AA6DC93F263899CB037D734C835F6F20 /* ImageDownloader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDownloader.swift; path = Sources/ImageDownloader.swift; sourceTree = "<group>"; };
 		ADC463FB9CC37BB54DE85F0306C91351 /* Pods-MZBanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MZBanner.release.xcconfig"; sourceTree = "<group>"; };
 		AF2292A4F30FEB1EED1E633BBD3B373E /* Pods-MZBanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MZBanner.debug.xcconfig"; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 		B4FE39B70A9167074B7602E8CDAC00FE /* Kingfisher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Kingfisher.debug.xcconfig; sourceTree = "<group>"; };
 		BC22C6B9532B51C7C389ED0702A0B2CB /* Kingfisher-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-prefix.pch"; sourceTree = "<group>"; };
 		BDA1A6802301A708C1021D3C9445CBB9 /* ImageView+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ImageView+Kingfisher.swift"; path = "Sources/ImageView+Kingfisher.swift"; sourceTree = "<group>"; };
-		C3F44C782D64D7EB20B61CE3844EBFAD /* libKingfisher.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libKingfisher.a; path = libKingfisher.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3F44C782D64D7EB20B61CE3844EBFAD /* libKingfisher.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKingfisher.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C87E9330AD273AA9DD9A88C213AEED26 /* ImageTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageTransition.swift; path = Sources/ImageTransition.swift; sourceTree = "<group>"; };
 		CFA6A9F31B05E7D67ED437AC30476726 /* Placeholder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Placeholder.swift; path = Sources/Placeholder.swift; sourceTree = "<group>"; };
 		D6C026A632FA8C03A8D9E1745DED99D5 /* UIButton+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+Kingfisher.swift"; path = "Sources/UIButton+Kingfisher.swift"; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A1F9FC9EE72C023CC63EC91879384DD4 /* Frameworks */ = {
+		7E476019E4B5C96BB5345A135AA53773 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -182,7 +182,6 @@
 				D6C026A632FA8C03A8D9E1745DED99D5 /* UIButton+Kingfisher.swift */,
 				435E777D10926BEC07B1E11CD5A2B1F4 /* Support Files */,
 			);
-			name = Kingfisher;
 			path = Kingfisher;
 			sourceTree = "<group>";
 		};
@@ -216,11 +215,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		59BACDA8602E9E52E97047DB3443A718 /* Headers */ = {
+		3E795897A8EAB9690F7C09E18AD30AAE /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0A4DB685AF592FD33E00D63FDD19EBD /* Pods-MZBanner-umbrella.h in Headers */,
+				6ADEF5EEEC05078BEF7FC62066780C87 /* Pods-MZBanner-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,16 +237,16 @@
 /* Begin PBXNativeTarget section */
 		8CB86430903770841D63CFEE7458BD69 /* Pods-MZBanner */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 48E318297A77684DDE60875D31528A9B /* Build configuration list for PBXNativeTarget "Pods-MZBanner" */;
+			buildConfigurationList = E5B99619A2D23CA1F77C53C9E6C65CB9 /* Build configuration list for PBXNativeTarget "Pods-MZBanner" */;
 			buildPhases = (
-				59BACDA8602E9E52E97047DB3443A718 /* Headers */,
-				DA6D3B75AFE3118D89DB0831D448885C /* Sources */,
-				A1F9FC9EE72C023CC63EC91879384DD4 /* Frameworks */,
+				3E795897A8EAB9690F7C09E18AD30AAE /* Headers */,
+				E33DCA88AF055841B8DE931C8D22F282 /* Sources */,
+				7E476019E4B5C96BB5345A135AA53773 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				471736DF0FC33FB73CAE34CD07B57139 /* PBXTargetDependency */,
+				81FDB49D40B6DEDB45924DCAE20EDC02 /* PBXTargetDependency */,
 			);
 			name = "Pods-MZBanner";
 			productName = "Pods-MZBanner";
@@ -359,27 +358,97 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA6D3B75AFE3118D89DB0831D448885C /* Sources */ = {
+		E33DCA88AF055841B8DE931C8D22F282 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F421B6B8DEBB63C7CACDC5E101884F5 /* Pods-MZBanner-dummy.m in Sources */,
+				7222723F12D4F8D7970CBDC166ADB31B /* Pods-MZBanner-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		471736DF0FC33FB73CAE34CD07B57139 /* PBXTargetDependency */ = {
+		81FDB49D40B6DEDB45924DCAE20EDC02 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Kingfisher;
 			target = E8022D22FAA6690B5E1C379C1BCE1491 /* Kingfisher */;
-			targetProxy = 3EBBAF8B4A372B1EC219AEA264A3FF02 /* PBXContainerItemProxy */;
+			targetProxy = D92A998733A6B568461AE35F2D5D8EB7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		8F17DC3A99F99FBAD606CE6963886315 /* Release */ = {
+		7558028D26D4FBC10978383369104C59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 242B6B08F850DF1972401B4E86B7432A /* Kingfisher.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/Kingfisher/Kingfisher-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MODULEMAP_FILE = Headers/Public/Kingfisher/Kingfisher.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = Kingfisher;
+				PRODUCT_NAME = Kingfisher;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		78E949E143122332646C5DAD6CBC2AF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4FE39B70A9167074B7602E8CDAC00FE /* Kingfisher.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/Kingfisher/Kingfisher-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MODULEMAP_FILE = Headers/Public/Kingfisher/Kingfisher.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = Kingfisher;
+				PRODUCT_NAME = Kingfisher;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BA148AE26E8CE457605E46BA5E1F9124 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF2292A4F30FEB1EED1E633BBD3B373E /* Pods-MZBanner.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MZBanner/Pods-MZBanner.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C14E932D4C3EFCC589F7DEABCEC18F22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -405,6 +474,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -439,7 +509,7 @@
 			};
 			name = Release;
 		};
-		916E0404255105F480DC4950B7625F7A /* Debug */ = {
+		EF3BAAA889B17377BE8F3254633FA0A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -465,6 +535,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -503,85 +574,11 @@
 			};
 			name = Debug;
 		};
-		A4E21D0C85C6A0643B9C9C3C23A47626 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 242B6B08F850DF1972401B4E86B7432A /* Kingfisher.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/Kingfisher/Kingfisher-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MODULEMAP_FILE = Headers/Public/Kingfisher/Kingfisher.modulemap;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = Kingfisher;
-				PRODUCT_NAME = Kingfisher;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		D00D7FEC2DAFF2155EDAED0691AF6291 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF2292A4F30FEB1EED1E633BBD3B373E /* Pods-MZBanner.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-MZBanner/Pods-MZBanner.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D59DD1855A6C812356DCFAFF0013E542 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B4FE39B70A9167074B7602E8CDAC00FE /* Kingfisher.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/Kingfisher/Kingfisher-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MODULEMAP_FILE = Headers/Public/Kingfisher/Kingfisher.modulemap;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = Kingfisher;
-				PRODUCT_NAME = Kingfisher;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		E34757E988442B4FC96E7FA9A933CC77 /* Release */ = {
+		F8EBCFDAA1437775E57D1861BEE128C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ADC463FB9CC37BB54DE85F0306C91351 /* Pods-MZBanner.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -605,17 +602,8 @@
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				916E0404255105F480DC4950B7625F7A /* Debug */,
-				8F17DC3A99F99FBAD606CE6963886315 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		48E318297A77684DDE60875D31528A9B /* Build configuration list for PBXNativeTarget "Pods-MZBanner" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D00D7FEC2DAFF2155EDAED0691AF6291 /* Debug */,
-				E34757E988442B4FC96E7FA9A933CC77 /* Release */,
+				EF3BAAA889B17377BE8F3254633FA0A7 /* Debug */,
+				C14E932D4C3EFCC589F7DEABCEC18F22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -623,8 +611,17 @@
 		A4270D1EFB0F1807493C55C6499DC21B /* Build configuration list for PBXNativeTarget "Kingfisher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D59DD1855A6C812356DCFAFF0013E542 /* Debug */,
-				A4E21D0C85C6A0643B9C9C3C23A47626 /* Release */,
+				78E949E143122332646C5DAD6CBC2AF8 /* Debug */,
+				7558028D26D4FBC10978383369104C59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5B99619A2D23CA1F77C53C9E6C65CB9 /* Build configuration list for PBXNativeTarget "Pods-MZBanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA148AE26E8CE457605E46BA5E1F9124 /* Debug */,
+				F8EBCFDAA1437775E57D1861BEE128C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

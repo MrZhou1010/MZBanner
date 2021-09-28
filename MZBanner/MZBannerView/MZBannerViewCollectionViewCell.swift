@@ -67,11 +67,11 @@ class MZBannerViewCollectionViewCell: UICollectionViewCell {
         self.titleContainerView.isHidden = (attributeString == nil || attributeString?.string == "") ? true : false
         let containerViewSize = self.titleContainerView.bounds.size
         if let imageSize = titleImageSize {
-            self.titleImageView.frame = CGRect(x: 5, y: (containerViewSize.height - imageSize.height) / 2.0, width: imageSize.width, height: imageSize.height)
-            self.titleLabel.frame = CGRect(x: 8 + imageSize.width, y: 0, width: containerViewSize.width - 8 - imageSize.width - 5, height: containerViewSize.height)
+            self.titleImageView.frame = CGRect(x: 5.0, y: (containerViewSize.height - imageSize.height) / 2.0, width: imageSize.width, height: imageSize.height)
+            self.titleLabel.frame = CGRect(x: 8.0 + imageSize.width, y: 0, width: containerViewSize.width - 8.0 - imageSize.width - 5.0, height: containerViewSize.height)
         } else {
             self.titleImageView.frame = CGRect.zero
-            self.titleLabel.frame = CGRect(x: 5, y: 0, width: containerViewSize.width - 10, height: containerViewSize.height)
+            self.titleLabel.frame = CGRect(x: 5.0, y: 0, width: containerViewSize.width - 10.0, height: containerViewSize.height)
         }
         if titleImageUrl != nil {
             if let url = URL(string: titleImageUrl!) {

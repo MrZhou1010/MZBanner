@@ -17,25 +17,26 @@
     4.当前page大小 currentPageSize
     5.page位置 alignment
     6.page圆角 pageCornerRadius
-    6.当前page圆角 currentPageCornerRadius
-    7.当前page currentPage
-    8.page颜色 pageIndicatorTintColor
-    9.当前page颜色 currentPageIndicatorTintColor
-    10.以image作为page pageImage
-    11.当前page的image currentPageImage
-    12.是否显示page的序号 isShowPageNumber
-    13.page的序号文字颜色 pageNumberColor
-    14.page的序号文字字体 pageNumberFont
-    15.当前page的序号文字颜色 currentPageNumberColor
-    16.当前page的序号文字字体 currentPageNumberFont
-    17.是否显示page的边框 isShowPageBorder
-    18.page的边框宽度 pageBorderWidth
-    19.page的边框颜色 pageBorderColor
-    20.当前page的边框宽度 currentPageBorderWidth
-    21.当前page的边框颜色 currentPageBorderColor
-    22.是否可以点击page isClickEnable
-    23.是否动画 isAnimationEnable
-    注：动画不支持以image作为page的样式
+    7.当前page圆角 currentPageCornerRadius
+    8.当前page currentPage
+    9.page颜色 pageIndicatorTintColor
+    10.当前page颜色 currentPageIndicatorTintColor
+    11.以image作为page pageImage
+    12.当前page的image currentPageImage
+    13.是否显示page的序号 isShowPageNumber
+    14.page的序号文字颜色 pageNumberColor
+    15.page的序号文字字体 pageNumberFont
+    16.当前page的序号文字颜色 currentPageNumberColor
+    17.当前page的序号文字字体 currentPageNumberFont
+    18.是否显示page的边框 isShowPageBorder
+    19.page的边框宽度 pageBorderWidth
+    20.page的边框颜色 pageBorderColor
+    21.当前page的边框宽度 currentPageBorderWidth
+    22.当前page的边框颜色 currentPageBorderColor
+    23.是否可以点击page isClickEnable
+    24.点击page的回调 pageClickBlock
+    25.是否动画 isAnimationEnable
+    注：当前动画仅在当前page和其他page高度相同时有较好效果,对高度不一样的、以image作为page、添加序号的会存在问题
 
 二.自动轮播图Banner
 
