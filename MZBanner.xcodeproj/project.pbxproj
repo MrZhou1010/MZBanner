@@ -17,7 +17,7 @@
 		5A2DB453237FE0AD00ABE304 /* MZPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2DB452237FE0AD00ABE304 /* MZPageControl.swift */; };
 		5A2DB455237FEDCB00ABE304 /* MZBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2DB454237FEDCB00ABE304 /* MZBannerView.swift */; };
 		5A2DB457237FF2D100ABE304 /* MZBannerViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2DB456237FF2D100ABE304 /* MZBannerViewFlowLayout.swift */; };
-		5A2DB459237FF31200ABE304 /* MZBannerViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2DB458237FF31200ABE304 /* MZBannerViewCollectionViewCell.swift */; };
+		5A2DB459237FF31200ABE304 /* MZBannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2DB458237FF31200ABE304 /* MZBannerCollectionViewCell.swift */; };
 		784A6B3E305921A928EE8CE6 /* libPods-MZBanner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC476A5594717A0C4827D1DB /* libPods-MZBanner.a */; };
 		B438D975238E4B5C008362C9 /* MZPageControlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B438D974238E4B5C008362C9 /* MZPageControlVC.swift */; };
 		B438D977238E4B8C008362C9 /* MZBannerViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B438D976238E4B8C008362C9 /* MZBannerViewVC.swift */; };
@@ -58,7 +58,7 @@
 		5A2DB452237FE0AD00ABE304 /* MZPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZPageControl.swift; sourceTree = "<group>"; };
 		5A2DB454237FEDCB00ABE304 /* MZBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZBannerView.swift; sourceTree = "<group>"; };
 		5A2DB456237FF2D100ABE304 /* MZBannerViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZBannerViewFlowLayout.swift; sourceTree = "<group>"; };
-		5A2DB458237FF31200ABE304 /* MZBannerViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZBannerViewCollectionViewCell.swift; sourceTree = "<group>"; };
+		5A2DB458237FF31200ABE304 /* MZBannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZBannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		5FB1C60A3E41A6E5901EF5C0 /* Pods-MZBanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MZBanner.release.xcconfig"; path = "Target Support Files/Pods-MZBanner/Pods-MZBanner.release.xcconfig"; sourceTree = "<group>"; };
 		B438D974238E4B5C008362C9 /* MZPageControlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZPageControlVC.swift; sourceTree = "<group>"; };
 		B438D976238E4B8C008362C9 /* MZBannerViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZBannerViewVC.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 			children = (
 				5A2DB454237FEDCB00ABE304 /* MZBannerView.swift */,
 				5A2DB456237FF2D100ABE304 /* MZBannerViewFlowLayout.swift */,
-				5A2DB458237FF31200ABE304 /* MZBannerViewCollectionViewCell.swift */,
+				5A2DB458237FF31200ABE304 /* MZBannerCollectionViewCell.swift */,
 			);
 			path = MZBannerView;
 			sourceTree = "<group>";
@@ -346,7 +346,7 @@
 				5A2DB457237FF2D100ABE304 /* MZBannerViewFlowLayout.swift in Sources */,
 				5A2DB455237FEDCB00ABE304 /* MZBannerView.swift in Sources */,
 				5A2DB453237FE0AD00ABE304 /* MZPageControl.swift in Sources */,
-				5A2DB459237FF31200ABE304 /* MZBannerViewCollectionViewCell.swift in Sources */,
+				5A2DB459237FF31200ABE304 /* MZBannerCollectionViewCell.swift in Sources */,
 				5A2DB423237FE00C00ABE304 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

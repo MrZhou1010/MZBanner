@@ -18,8 +18,8 @@ class MZPageControlVC: UIViewController {
     }
     
     private func setupUI() {
-        let bannerView = MZBannerView.init(frame: CGRect(x: 0, y: kStatusNavBarHeight, width: self.view.bounds.size.width, height: 150.0))
-        bannerView.timeInterval = 3
+        let bannerView = MZBannerView(frame: CGRect(x: 0, y: kStatusNavBarHeight, width: self.view.bounds.size.width, height: 150.0))
+        bannerView.timeInterval = 3.0
         bannerView.placeholderImage = UIImage(named: "icon_placeholder")
         bannerView.setImageUrlsGroup(["http://chatm-icon.oss-cn-beijing.aliyuncs.com/pic/pic_20171101181927887.jpg",
                                       "http://chatm-icon.oss-cn-beijing.aliyuncs.com/pic/pic_20171114171645011.jpg",
@@ -33,7 +33,7 @@ class MZPageControlVC: UIViewController {
         self.view.addSubview(bannerView)
         switch self.type {
         case 0:
-            bannerView.showPageControl = true
+            bannerView.isShowPageControl = true
             bannerView.pageControlIsClickEnable = true
         case 1:
             bannerView.pageControlIndictorColor = UIColor.green

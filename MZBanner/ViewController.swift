@@ -11,7 +11,9 @@ import UIKit
 class ViewController: UIViewController {
     
     private var data: [String] = ["MZPageControl", "MZBannerView"]
+    
     private var pageControlData = ["默认", "颜色","位置", "大小", "圆角", "图片", "动画"]
+    
     private var bannerViewData = ["本地图片", "本地图片+描述文本", "文本", "网络图片", "网络图片+描述文本"]
     
     override func viewDidLoad() {
@@ -21,7 +23,7 @@ class ViewController: UIViewController {
     }
     
     private func setupUI() {
-        let tableView = UITableView.init(frame: self.view.bounds, style: .grouped)
+        let tableView = UITableView(frame: self.view.bounds, style: .grouped)
         tableView.backgroundColor = UIColor.white
         tableView.delegate = self
         tableView.dataSource = self
@@ -74,18 +76,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 0 {
-            let pageControlVC = MZPageControlVC.init()
+            let pageControlVC = MZPageControlVC()
             pageControlVC.type = indexPath.row
             self.navigationController?.pushViewController(pageControlVC, animated: true)
         } else if indexPath.section == 1 {
-            let bannerViewVC = MZBannerViewVC.init()
+            let bannerViewVC = MZBannerViewVC()
             bannerViewVC.type = indexPath.row
             self.navigationController?.pushViewController(bannerViewVC, animated: true)
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionView = UIView.init(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 40.0))
+        let sectionView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 40.0))
         sectionView.backgroundColor = UIColor.darkGray.withAlphaComponent(0.2)
         let titleLbl = UILabel(frame: CGRect(x: 12.0, y: 0, width: self.view.bounds.size.width - 24.0, height: 40.0))
         titleLbl.text = self.data[section]
@@ -104,7 +106,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView.init()
+        return UIView()
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

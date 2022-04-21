@@ -70,18 +70,19 @@ class MZPageControl: UIControl {
     public var currentPage: Int = 0 {
         didSet {
             if self.isAnimationEnable {
-                self.changeColor()
                 self.updateFrame()
                 if self.currentPage == oldValue || self.isAnimating {
                     return
                 }
                 if self.currentPage > oldValue {
+                    self.changeColor(currentPage: oldValue)
                     self.startAnimationToRight(oldPage: oldValue, newPage: self.currentPage)
                 } else {
+                    self.changeColor(currentPage: oldValue)
                     self.startAnimationToLeft(oldPage: oldValue, newPage: self.currentPage)
                 }
             } else {
-                self.changeColor()
+                self.changeColor(currentPage: self.currentPage)
                 self.updateFrame()
                 self.updatePageNumbers()
             }
@@ -91,28 +92,28 @@ class MZPageControl: UIControl {
     /// page颜色
     public var pageIndicatorTintColor: UIColor = UIColor.gray {
         didSet {
-            self.changeColor()
+            self.changeColor(currentPage: self.currentPage)
         }
     }
     
     /// 当前page颜色
     public var currentPageIndicatorTintColor: UIColor = UIColor.white {
         didSet {
-            self.changeColor()
+            self.changeColor(currentPage: self.currentPage)
         }
     }
     
     /// 以image作为page
     public var pageImage: UIImage? {
         didSet {
-            self.changeColor()
+            self.changeColor(currentPage: self.currentPage)
         }
     }
     
     /// 当前page的image
     public var currentPageImage: UIImage? {
         didSet {
-            self.changeColor()
+            self.changeColor(currentPage: self.currentPage)
         }
     }
     
@@ -223,7 +224,7 @@ class MZPageControl: UIControl {
             let imageView = UIImageView(frame: frame)
             imageView.tag = 1000 + i
             imageView.isUserInteractionEnabled = self.isClickEnable
-            let tap = UITapGestureRecognizer(target: self, action: #selector(pageClick(tap:)))
+            let tap = UITapGestureRecognizer(target: self, action: #selector(pageClicked(tap:)))
             imageView.addGestureRecognizer(tap)
             self.addSubview(imageView)
             self.pages.append(imageView)
@@ -277,9 +278,9 @@ class MZPageControl: UIControl {
     }
     
     /// 更新颜色
-    private func changeColor() {
+    private func changeColor(currentPage: Int) {
         for (index, page) in self.pages.enumerated() {
-            if index == self.currentPage {
+            if index == currentPage {
                 page.backgroundColor = self.currentPageImage == nil ? self.currentPageIndicatorTintColor : UIColor.clear
                 page.image = self.currentPageImage
                 if self.currentPageImage != nil {
@@ -336,7 +337,7 @@ class MZPageControl: UIControl {
         return hitView == self ? nil : hitView
     }
     
-    @objc private func pageClick(tap: UITapGestureRecognizer) {
+    @objc private func pageClicked(tap: UITapGestureRecognizer) {
         let index = tap.view!.tag - 1000
         self.currentPage = index
         if self.pageClickBlock != nil {

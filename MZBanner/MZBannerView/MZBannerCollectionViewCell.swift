@@ -1,5 +1,5 @@
 //
-//  MZBannerViewCollectionViewCell.swift
+//  MZBannerCollectionViewCell.swift
 //  MZBanner
 //
 //  Created by Mr.Z on 2019/11/16.
@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class MZBannerViewCollectionViewCell: UICollectionViewCell {
+class MZBannerCollectionViewCell: UICollectionViewCell {
     
     public var imageView: UIImageView!
     
@@ -28,24 +28,23 @@ class MZBannerViewCollectionViewCell: UICollectionViewCell {
         self.setupTitleLabel()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     private func setupImageView() {
-        self.imageView = UIImageView.init(frame: self.contentView.bounds)
+        self.imageView = UIImageView(frame: self.contentView.bounds)
         self.imageView.clipsToBounds = true
         self.contentView.addSubview(self.imageView)
     }
     
     private func setupTitleLabel() {
-        self.titleContainerView = UIView.init(frame: CGRect(x: 0, y: self.contentView.bounds.size.height - self.titleContainerViewH, width: self.contentView.bounds.size.width, height: self.titleContainerViewH))
+        self.titleContainerView = UIView(frame: CGRect(x: 0, y: self.contentView.bounds.size.height - self.titleContainerViewH, width: self.contentView.bounds.size.width, height: self.titleContainerViewH))
         self.titleContainerView.isHidden = true
         self.contentView.addSubview(self.titleContainerView)
-        self.titleImageView = UIImageView.init()
+        self.titleImageView = UIImageView()
         self.titleContainerView.addSubview(self.titleImageView)
-        self.titleLabel = UILabel.init()
+        self.titleLabel = UILabel()
         self.titleLabel.clipsToBounds = true
         self.titleContainerView.addSubview(self.titleLabel)
     }

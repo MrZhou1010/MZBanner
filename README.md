@@ -60,7 +60,7 @@
     17.文本背景颜色 titleBackgroundColor
     18.文本默认为单行显示 titleNumberOfLines
     19.文本的breakMode titleLineBreakMode
-    20.是否显示pageControl showPageControl
+    20.是否显示pageControl isShowPageControl
     .
     .
     .

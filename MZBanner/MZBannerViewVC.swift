@@ -17,7 +17,7 @@ class MZBannerViewVC: UIViewController {
     public var type: Int = 0
     
     private lazy var bannerView: MZBannerView = {
-        let bannerView: MZBannerView = MZBannerView.init(frame: CGRect(x: 0, y: kStatusNavBarHeight, width: self.view.bounds.size.width, height: 160.0))
+        let bannerView: MZBannerView = MZBannerView(frame: CGRect(x: 0, y: kStatusNavBarHeight, width: self.view.bounds.size.width, height: 160.0))
         bannerView.placeholderImage = UIImage(named: "icon_placeholder")
         return bannerView
     }()
@@ -65,13 +65,13 @@ class MZBannerViewVC: UIViewController {
             }
             self.bannerView.setImagesGroup(localImages, titlesGroup: titles, attributedTitlesGroup: attributedTitles)
             self.bannerView.itemSize = CGSize(width: self.view.bounds.size.width - 50.0, height: (self.view.bounds.size.width - 50.0) * 300.0 / 750.0)
-            self.bannerView.timeInterval = 3
+            self.bannerView.timeInterval = 3.0
             self.bannerView.itemSpacing = 10.0
             self.bannerView.titleBackgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
             self.bannerView.titleNumberOfLines = 0
             self.bannerView.titleViewHeight = 40.0
             self.bannerView.itemBorderWidth = 1.0
-            self.bannerView.showPageControl = false
+            self.bannerView.isShowPageControl = false
             self.bannerView.didSelectedItem = {
                 print("点击第\($0)个item")
             }
@@ -117,7 +117,7 @@ class MZBannerViewVC: UIViewController {
                                        "http://t.cn/RYVfgeI",
                                        "http://t.cn/RYVfsLo"]
             self.bannerView.placeholderImage = UIImage(named: "icon_placeholder")
-            self.bannerView.timeInterval = 3
+            self.bannerView.timeInterval = 3.0
             self.bannerView.setImageUrlsGroup(imageUrls, titlesGroup: nil, attributedTitlesGroup: nil)
             self.bannerView.pageControlSize = CGSize(width: 16.0, height: 4.0)
             self.bannerView.pageControlCurrentSize = CGSize(width: 16.0, height: 6.0)

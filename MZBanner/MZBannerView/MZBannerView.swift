@@ -31,8 +31,8 @@ class MZBannerView: UIView {
         }
     }
     
-    /// 轮播时间间隔,默认为2s
-    public var timeInterval: Int = 2
+    /// 轮播时间间隔,默认为2.0s
+    public var timeInterval: TimeInterval = 2.0
     
     /// 轮播方向,默认为水平
     public var scrollDirection: UICollectionView.ScrollDirection = .horizontal {
@@ -119,9 +119,9 @@ class MZBannerView: UIView {
     
     // MARK: - PageControl
     /// 是否显示pageControl,默认为false
-    public var showPageControl = false {
+    public var isShowPageControl = false {
         didSet {
-            self.pageControl.isHidden = !self.showPageControl
+            self.pageControl.isHidden = !self.isShowPageControl
         }
     }
     
@@ -249,7 +249,7 @@ class MZBannerView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.decelerationRate = UIScrollView.DecelerationRate(rawValue: 0.0)
-        collectionView.register(MZBannerViewCollectionViewCell.self, forCellWithReuseIdentifier: "bannerViewCellId")
+        collectionView.register(MZBannerCollectionViewCell.self, forCellWithReuseIdentifier: "bannerViewCellId")
         return collectionView
     }()
     
@@ -292,9 +292,8 @@ class MZBannerView: UIView {
         self.setupUI()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     override func willMove(toWindow newWindow: UIWindow?) {
@@ -325,6 +324,7 @@ class MZBannerView: UIView {
 
 // MARK: - 设置数据
 extension MZBannerView {
+    
     /// 设置本地轮播图片
     /// - Parameters:
     ///   - imagesGroup: 轮播图片数组
@@ -421,7 +421,7 @@ extension MZBannerView {
         self.pageControl.numberOfPages = self.realDataCount
         self.pageControl.currentPage = self.currentIndex() % self.realDataCount
         if self.resourceType == .text  {
-            self.showPageControl = false
+            self.isShowPageControl = false
         }
         if self.isAutomatic {
             self.startTimer()
@@ -431,12 +431,13 @@ extension MZBannerView {
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension MZBannerView: UICollectionViewDataSource, UICollectionViewDelegate {
+    
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.itemsCount
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bannerViewCellId", for: indexPath) as! MZBannerViewCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bannerViewCellId", for: indexPath) as! MZBannerCollectionViewCell
         let index = indexPath.item % self.realDataCount
         switch self.resourceType {
         case .image:
@@ -486,6 +487,7 @@ extension MZBannerView: UICollectionViewDataSource, UICollectionViewDelegate {
 
 // MARK: - UIScrollViewDelegate
 extension MZBannerView: UIScrollViewDelegate {
+    
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if self.isAutomatic {
             self.endTimer()
@@ -515,6 +517,7 @@ extension MZBannerView: UIScrollViewDelegate {
 
 // MARK: - 处理第一页和最后一页
 extension MZBannerView {
+    
     /// 获取当前页
     private func currentIndex() -> Int {
         let itemWH = self.scrollDirection == .horizontal ? self.flowLayout.itemSize.width + self.itemSpacing : self.flowLayout.itemSize.height + self.itemSpacing
@@ -554,6 +557,7 @@ extension MZBannerView {
 
 // MARK: - Timer
 extension MZBannerView {
+    
     /// 开启定时器
     private func startTimer() {
         // 非自动轮播或者页数只有一页
@@ -561,7 +565,7 @@ extension MZBannerView {
             return
         }
         self.endTimer()
-        self.timer = Timer(timeInterval: Double(self.timeInterval), target: self, selector: #selector(timeRepeatAction), userInfo: nil, repeats: true)
+        self.timer = Timer(timeInterval: self.timeInterval, target: self, selector: #selector(timeRepeatAction), userInfo: nil, repeats: true)
         RunLoop.main.add(self.timer!, forMode: RunLoop.Mode.common)
     }
     
